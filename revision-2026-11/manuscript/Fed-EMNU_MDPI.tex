@@ -781,8 +781,12 @@ The original implementation repository is
 \url{https://github.com/Daoge12/Fed-EMNU}. The revised canonical runner, second-round execution and analysis scripts,
 configurations, dependency versions, completed-run logs, saved predictions and
 numerical summaries are included in the accompanying reproducibility package.
-The repository URL identifies the original implementation and does not imply
-that the second-round code has been uploaded there. CIFAR data and checkpoint
+The revised source, protocols and numerical summaries are publicly available
+in the revision branch at
+\url{https://github.com/Daoge12/Fed-EMNU/tree/codex/revision-2026-11}
+(source snapshot \texttt{8fa5b727b820eac8c69a8c85e83840ba1951904d}).
+That concise release is distinct from the full prediction/log supplement
+supplied with this revision. CIFAR data and checkpoint
 weights are omitted from the lightweight package; the supplied training commands
 regenerate the required checkpoints. Exact historical original-result
 provenance remains unresolved.
@@ -806,8 +810,16 @@ Extension studies use three seeds; primary uncertainty intervals use five.
 \input{revision_clients20.tex}
 \input{revision_continuation.tex}
 
+\section{Controlled Comparisons and Timing Details}
+\label{sec:controlled-details}
+The following three-seed controls and technical timing repeats supplement
+the concise interpretation in Section~\ref{sec:controlled-summary}.
+\input{revision_round2_controls.tex}
+\input{revision_walltime.tex}
+
 \clearpage
 \reftitle{References}
 \externalbibliography{yes}
 \bibliography{references}
 \end{document}
+

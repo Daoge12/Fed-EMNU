@@ -172,8 +172,34 @@ validates arbitrary request streams or future training. Full tables and
 protocol boundaries remain available in the appendices.
 
 
-\input{revision_round2_controls.tex}
-\input{revision_walltime.tex}
+\subsection{Controlled Comparisons and Robust Timing}
+\label{sec:controlled-summary}
+Matched objective controls use three paired seeds, common checkpoints, full
+retained data and identical random ordering. At 80 noise steps/three repair
+epochs, Fed-minus-UNSIR RA is $0.063\pm0.371$ percentage points under IID
+and $-0.463\pm0.361$ under Non-IID; at 40 steps/one repair epoch it is
+$-0.004\pm0.306$ and $-0.356\pm0.222$ points. These controls do not establish
+a consistent advantage of the Fed-EMNU penalty. Optimized noise lowers target
+attack AUC relative to Gaussian inputs by $0.029\pm0.012$ and
+$0.022\pm0.018$, respectively, but has mixed accuracy effects.
+Retained-count event weighting raises Non-IID RA by $0.896\pm0.224$ points
+and FA by $0.600\pm0.557$ relative to equal weighting.
+
+Separate comparisons impose common maximum compute/serialization caps of
+10, 20, 30 and 40 seconds. All 48 events finish within their caps. Fed-EMNU
+has higher mean RA at every cap, by 1.41/0.49/0.48/0.39 points under IID
+and 4.50/1.81/1.29/1.56 points under Non-IID, but also higher FA and target
+attack AUC throughout. These are time-capped adaptations with reported
+realized steps and consumed times; early completion is not padded. The results
+show a utility--suppression trade-off rather than dominance or a privacy gain.
+
+Robust summaries retain the historical Non-IID timing outlier. Six technical
+repeats reproduce the saved predictions exactly but do not reproduce its large
+delay: seed 45 takes a median 25.76 seconds, versus 114.20 seconds originally.
+The historical cause remains unresolved; repeats are not additional scientific
+seeds. Appendix~\ref{sec:controlled-details} gives the full control protocols,
+tables, timing distributions and limits, separately from the five-seed primary
+comparison.
 
 \subsection{Applicability and Failure Conditions}
 \label{sec:applicability}

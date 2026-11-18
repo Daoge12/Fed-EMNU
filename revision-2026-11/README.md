@@ -2,7 +2,7 @@
 
 Source and numerical summaries for the empirical class-suppression revision.
 The original implementation remains in `../Fed-EMNU-main/`.
-No updated compiled manuscript or response PDF is included.
+The manuscript source includes the final four-section revision, concise main-body control results and Appendix D diagnostics. Compiled manuscripts and response Word files are in the separate local submission bundle.
 
 ## Rebuild checkpoints
 
