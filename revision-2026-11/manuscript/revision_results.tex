@@ -1,0 +1,198 @@
+\subsection{Unlearning Effectiveness}
+\label{sec:effectiveness}
+Tables~\ref{tab:iid-utility} and~\ref{tab:noniid-utility} compare the methods
+under IID and Non-IID partitions. Values are mean $\pm$ sample SD across five
+independent seeds (42--46). The target is class 0; the main method uses $rt=1$.
+\begin{table}[H]\centering\small
+\caption{IID utility and method time. Original time is pretraining cost; Retrain is the retained-data reference.}
+\label{tab:iid-utility}
+\begin{tabular}{lrrrrr}\toprule Method & $n$ & FA (\%) & RA (\%) & Acc. (\%) & Time (s)\\\midrule
+Original & 5 & $79.08 \pm 0.37$ & $73.34 \pm 0.44$ & $73.92 \pm 0.40$ & $533.88 \pm 90.89$\\
+Retrain & 5 & $0.00 \pm 0.00$ & $74.55 \pm 0.54$ & $67.10 \pm 0.48$ & $482.88 \pm 96.54$\\
+Finetune & 5 & $78.12 \pm 0.40$ & $74.00 \pm 0.26$ & $74.41 \pm 0.23$ & $23.17 \pm 5.47$\\
+GA & 5 & $17.38 \pm 1.75$ & $67.85 \pm 0.56$ & $62.80 \pm 0.51$ & $3.25 \pm 0.78$\\
+Fed-EMNU & 5 & $6.80 \pm 1.35$ & $75.24 \pm 0.08$ & $68.40 \pm 0.20$ & $22.43 \pm 4.57$\\
+UNSIR-style & 5 & $4.04 \pm 1.25$ & $74.80 \pm 0.22$ & $67.72 \pm 0.26$ & $13.34 \pm 2.56$\\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[H]\centering\small
+\caption{Non-IID ($\alpha=0.5$) utility and method time. Original time is pretraining cost; Retrain is the retained-data reference.}
+\label{tab:noniid-utility}
+\begin{tabular}{lrrrrr}\toprule Method & $n$ & FA (\%) & RA (\%) & Acc. (\%) & Time (s)\\\midrule
+Original & 5 & $66.46 \pm 8.86$ & $69.62 \pm 1.10$ & $69.30 \pm 1.04$ & $631.98 \pm 371.26$\\
+Retrain & 5 & $0.00 \pm 0.00$ & $70.05 \pm 1.01$ & $63.05 \pm 0.91$ & $802.48 \pm 842.82$\\
+Finetune & 5 & $64.54 \pm 10.70$ & $71.59 \pm 0.86$ & $70.88 \pm 0.82$ & $48.12 \pm 59.14$\\
+GA & 5 & $14.62 \pm 3.83$ & $66.38 \pm 2.86$ & $61.20 \pm 2.31$ & $4.82 \pm 3.30$\\
+Fed-EMNU & 5 & $12.70 \pm 9.68$ & $72.16 \pm 0.70$ & $66.22 \pm 1.11$ & $40.41 \pm 41.25$\\
+UNSIR-style & 5 & $4.36 \pm 3.39$ & $70.73 \pm 0.78$ & $64.09 \pm 0.79$ & $22.33 \pm 22.96$\\
+\bottomrule\end{tabular}\end{table}
+Fed-EMNU reduces target-class accuracy while retaining useful performance on
+the other classes. Its mean RA exceeds that of Retrain and the UNSIR-style
+adaptation in both partitions, but its FA remains above Retrain's zero and
+above the UNSIR-style comparator. Thus the retained-utility result does not
+establish equivalence to training without the target records.
+
+The target attack AUC is $0.620\pm0.017$ (IID) and $0.596\pm0.006$ (Non-IID),
+versus $0.508\pm0.026$ and $0.487\pm0.033$ for Retrain. Mean posterior TV is
+$0.254\pm0.003$ and $0.313\pm0.008$, respectively. These diagnostics expose
+remaining behavioral and membership differences. Complete reference distances,
+target/retained attacks and controls are in Appendix~\ref{sec:core-details}.
+The UNSIR-style comparator changes the noise penalty, noise steps and repair
+budget together, preventing attribution of its differences to one component.
+
+\textbf{Practical interpretation.} In the primary comparison, Fed-EMNU's mean
+RA advantage over the UNSIR-style adaptation is 0.44 percentage points under
+IID and 1.43 points under Non-IID. It costs more compute and retains more target
+accuracy. Thus, the evidence does not establish a uniformly preferable method.
+A deployment considering Fed-EMNU would need to value the retained-utility
+gain, tolerate the measured residual target and membership behavior, and meet
+its resource budget. For a requirement to verifiably remove individual training
+influence, these experiments provide insufficient evidence to qualify the
+method. Even the retraining reference is an empirical comparator rather than
+a privacy certificate for the full system.
+
+Figure~\ref{fig:additional-effectiveness} visualizes the main utility trade-off.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{additional_effectiveness.pdf}
+\caption{Primary-method target-class accuracy (FA) and retained accuracy (RA). Bars and whiskers are mean and sample SD across five seeds, using the same summaries as Tables~\ref{tab:iid-utility} and~\ref{tab:noniid-utility}. Lower FA indicates class suppression, not a deletion guarantee.}
+\label{fig:additional-effectiveness}\end{figure}
+
+\subsection{Unlearning Efficiency}
+\label{sec:efficiency}
+The paired Retrain/Fed-EMNU method-time ratio is $21.54\pm0.35$ under IID
+and $19.56\pm0.71$ under Non-IID. The corresponding UNSIR-style/Fed-EMNU
+ratios are $0.60\pm0.08$ and $0.55\pm0.03$, and GA/Fed-EMNU is
+$0.14\pm0.01$ and $0.14\pm0.03$. A ratio below one means the named baseline
+is faster. Finetune/Fed-EMNU ratios are $1.03\pm0.04$ and $1.06\pm0.16$.
+These are paired compute/serialization ratios; evaluation and real transport
+are excluded. Non-IID seed 45 took 114.20 s for Fed-EMNU, whereas the other
+events took approximately 21--23 s. Its cause is unresolved and it is retained
+in the reported mean and SD. The event carries 868.83 MiB of tensor payload
+on average in both partitions; faster computation is not a network guarantee.
+
+Figure~\ref{fig:additional-efficiency} shows the measured costs and variability.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{additional_efficiency.pdf}
+\caption{Primary method time, arithmetic mean across five seeds. Sample SD is reported in the main utility tables; it is omitted here because the Non-IID retraining SD exceeds its mean and a logarithmic error interval would cross zero. A logarithmic axis displays fast update methods and retained-data retraining together. Timing includes local computation and serialization, and excludes evaluation and real transport. The unresolved Non-IID timing outlier is retained.}
+\label{fig:additional-efficiency}\end{figure}
+
+\subsection{Ablation of Unlearning and Enhancement}
+\label{sec:ablation}
+To explain how the existing components contribute, Figure~\ref{fig:ablation}
+compares the full workflow with unlearning alone (impair-only) and enhancement
+alone (repair-only), using the same request checkpoints across five seeds.
+These controls remove one existing stage and retain the prescribed budget of
+the remaining stage; they introduce no additional component.
+
+\textbf{Role of enhancement.} With unlearning alone, IID FA is
+$1.92\pm1.29$\% but RA falls to $72.61\pm1.51$\%, compared with
+$6.80\pm1.35$\% FA and $75.24\pm0.08$\% RA for the full workflow.
+Under Non-IID, RA rises from $36.78\pm22.04$\% without enhancement to
+$72.16\pm0.70$\% with both stages, while FA rises from $1.08\pm1.32$\%
+to $12.70\pm9.68$\%. Enhancement therefore recovers retained utility in
+this recipe, with some recovery of target-class predictions as well.
+
+\textbf{Role of target-directed unlearning.} Enhancement alone preserves
+RA ($75.56\pm0.33$\% IID; $72.82\pm0.76$\% Non-IID) but leaves FA at
+$41.42\pm1.83$\% and $41.00\pm7.45$\%, respectively. Retained-only
+enhancement is therefore insufficient to obtain the full workflow's target
+suppression. Together, these controls support the complementary functions of
+the two stages: target-directed updating supplies suppression, and enhancement
+recovers retained-task utility. They explain the design's measured trade-off,
+rather than establish that either primitive is new. Removing a stage also
+reduces computation, so these are stage-removal controls, not equal-compute
+comparisons or a proof of record deletion. They do not separately isolate
+optimized noise from arbitrary synthetic inputs or other impair objectives.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{fig5_ablation_revised.pdf}
+\caption{Two-stage ablation under IID and Non-IID partitions.
+Bars show mean Acc., FA and RA; whiskers show sample SD across five seeds.
+Forget-only denotes impair-only; Enhance-only denotes repair-only.
+All controls use the same request checkpoints and retained-data references.}
+\label{fig:ablation}\end{figure}
+
+\subsection{Local Retained-Data Selection}
+\label{sec:selection-results}
+Figure~\ref{fig:filtering} compares random and confidence-based selection. Both controls use $rt=0.5$, identical per-class counts, and paired
+checkpoints. Confidence minus random selection changes RA by
+$-1.50\pm0.27$ percentage points under IID and $-0.84\pm0.61$ under Non-IID.
+Their descriptive 95\% intervals are $[-1.837,-1.154]$ and
+$[-1.592,-0.083]$ (Appendix~\ref{sec:uncertainty}). The evaluated recipe does
+not support a confidence-selection advantage. These results do not establish an optimal retained ratio: the selection
+comparison uses a single ratio, and the $rt=1$ main recipe is not a matched
+ratio-only control for these experiments.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{fig6_filtering_revised.pdf}
+\caption{Matched retained-data selection at $rt=0.5$. Both partitions are evaluated. Bars and whiskers show mean and sample
+SD across five paired seeds; metric colors match Figure~\ref{fig:ablation}.}
+\label{fig:filtering}\end{figure}
+
+\subsection{Random-Seed Variation}
+\label{sec:seed-results}
+Figure~\ref{fig:seed} shows mean and sample SD across five seeds in both partitions. Non-IID FA varies substantially ($12.70\pm9.68$\%),
+although RA varies less ($72.16\pm0.70$\%). Variation is therefore not uniformly small across metrics and partitions. Primary confidence intervals and
+reference-to-reference variation are reported in Appendices~\ref{sec:uncertainty}
+and~\ref{sec:core-details}; small samples and variation in partition and schedule
+limit general stability claims.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{fig8_seed_revised.pdf}
+\caption{Seed variation of the full method: mean $\pm$ sample SD across seeds
+42--46. Both partitions are shown. Low FA alone is not a privacy or deletion
+guarantee; the attack and reference diagnostics must be considered jointly.}
+\label{fig:seed}\end{figure}
+
+\subsection{Additional Evaluation}
+\label{sec:extension-summary}
+The complete additional studies are retained in Appendix~\ref{sec:extensions}.
+ResNet34 extends the architecture evidence within the ResNet family. Stronger
+heterogeneity ($\alpha=0.1$) exposes poor starting utility and sparse target
+ownership, including the aggregation limitation in Section~\ref{sec:protocol}.
+In CIFAR-100, FA remains $33.00\pm12.49$\% (IID) and $24.67\pm13.32$\%
+(Non-IID), and target AUC exceeds the retraining reference; the fixed recipe
+does not establish effective cross-dataset deletion.
+
+The six PAR-code-based events use the same three-seed starting checkpoints as
+their core comparators, with the adaptation described in
+Appendix~\ref{sec:parprotocol}. PAR adaptation FA is $63.00\pm2.70$\% (IID)
+and $54.23\pm5.81$\%; RA is $74.76\pm0.33$\% and $72.14\pm0.47$\%.
+Its native budgets differ, and unavailable full-paper verification prevents
+claiming an exact reproduction or refutation of the published method.
+
+Twenty-client tests yield RA $71.41\pm0.80$\% (IID) and $66.69\pm1.41$\%
+(Non-IID), with paired 20-minus-10-client RA differences of
+$-3.88\pm0.84$ and $-5.46\pm0.58$ percentage points. Partitioning and local
+batching also change, so this is a limited scale test. The two-request study
+observes no class-0 rebound in six Fed-EMNU paths, with variable class-1
+suppression. Five retained-only continuation rounds after the single-class
+event also show no FA rebound in six paths, but target membership scores
+remain different from the continued retained-data reference. Neither study
+validates arbitrary request streams or future training. Full tables and
+protocol boundaries remain available in the appendices.
+
+
+\input{revision_round2_controls.tex}
+\input{revision_walltime.tex}
+
+\subsection{Applicability and Failure Conditions}
+\label{sec:applicability}
+The fixed recipe should not be extrapolated beyond the evaluated conditions.
+On CIFAR-100, target accuracy remains 33.00\% under IID and 24.67\% under
+Non-IID, with target membership AUC above the matching references. The method
+therefore fails to establish reliable class revocation on that dataset under
+the stated recipe. At twenty clients, retained accuracy drops by 3.88 and 5.46
+percentage points relative to paired ten-client runs. This does not support
+a claim that utility is maintained as the federation grows. With stronger
+heterogeneity, poor starting utility and sparse target ownership expose the
+limits of updating only target holders; the current aggregation rule gives
+other clients no separate repair contribution. ResNet34 adds depth within one
+architecture family, without establishing architecture independence.
+
+The mechanism is consequently an experimental option for approximate
+class suppression in cooperative, available-client settings with similar
+data and training conditions. Deployment would require representative local
+validation of target behavior, retained utility, membership exposure and
+resource use. The observed failures are part of the method's scope, not
+exceptions removed from the evaluation. No universal operating threshold or
+certified-deletion use case is established by this study.

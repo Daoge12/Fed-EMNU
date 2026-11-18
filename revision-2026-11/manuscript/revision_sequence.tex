@@ -1,0 +1,79 @@
+\subsection{Multiple Targets and Two Sequential Requests}
+
+\label{sec:sequence}
+
+This follow-up evaluates simultaneous revocation of classes $\{0,1\}$ and sequential revocation $\{0\}\rightarrow\{1\}$ on CIFAR-10/ResNet18, ten clients, IID and $\alpha=0.5$, seeds 42--44. 
+
+Each sequential method uses its own class-0 core output as the next parent; second-event initial states therefore differ across methods. Current request labels control synthetic inputs, GA access and target-holder participation; cumulative labels control quarantine, reference and evaluation. Both paths exclude classes 0 and 1 from retained repair. All final outputs use the same seed-specific, freshly initialized 50-round reference trained without both classes. Its original partition and client schedule are retained. Historical member/attack splits are identical across paths, with target macros over two classes and retained macros over eight. Total sequential cost includes the first and second events; the paths have different native budgets and are not an equal-compute ablation. Values are mean $\pm$ sample SD, $n=3$.
+
+\begin{table}[H]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+
+\caption{IID two-target final behavior and total event time, three seeds. Sim. is simultaneous; Seq. includes both requests.}
+
+\label{tab:sequence-iid}
+
+\begin{tabular}{llrrrrr}\toprule Method & Path & FA (\%) & RA (\%) & Target AUC & TV & Total s\\\midrule
+
+Finetune & Sim. & $81.10 \pm 0.57$ & $72.58 \pm 0.34$ & $0.638 \pm 0.007$ & $0.387 \pm 0.002$ & $38.67 \pm 28.32$\\
+
+Finetune & Seq. & $79.40 \pm 0.91$ & $73.02 \pm 0.28$ & $0.642 \pm 0.006$ & $0.382 \pm 0.002$ & $55.01 \pm 22.02$\\
+
+GA & Sim. & $15.80 \pm 2.63$ & $65.93 \pm 0.98$ & $0.584 \pm 0.018$ & $0.393 \pm 0.015$ & $6.89 \pm 1.81$\\
+
+GA & Seq. & $35.97 \pm 2.70$ & $67.45 \pm 1.07$ & $0.597 \pm 0.015$ & $0.395 \pm 0.015$ & $6.67 \pm 1.00$\\
+
+Fed-EMNU & Sim. & $2.12 \pm 0.70$ & $75.02 \pm 0.41$ & $0.583 \pm 0.018$ & $0.255 \pm 0.006$ & $31.03 \pm 5.93$\\
+
+Fed-EMNU & Seq. & $3.27 \pm 4.71$ & $75.72 \pm 0.21$ & $0.588 \pm 0.021$ & $0.251 \pm 0.009$ & $43.36 \pm 6.44$\\
+
+UNSIR-style & Sim. & $1.73 \pm 0.36$ & $74.75 \pm 0.60$ & $0.573 \pm 0.015$ & $0.262 \pm 0.009$ & $22.77 \pm 5.22$\\
+
+UNSIR-style & Seq. & $1.67 \pm 1.19$ & $74.63 \pm 0.16$ & $0.581 \pm 0.002$ & $0.259 \pm 0.000$ & $26.70 \pm 3.96$\\
+
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[H]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+
+\caption{Non-IID two-target final behavior and total event time, three seeds. Sim. is simultaneous; Seq. includes both requests.}
+
+\label{tab:sequence-noniid}
+
+\begin{tabular}{llrrrrr}\toprule Method & Path & FA (\%) & RA (\%) & Target AUC & TV & Total s\\\midrule
+
+Finetune & Sim. & $73.22 \pm 5.99$ & $69.53 \pm 1.28$ & $0.610 \pm 0.005$ & $0.414 \pm 0.017$ & $24.66 \pm 6.00$\\
+
+Finetune & Seq. & $73.63 \pm 5.23$ & $70.09 \pm 0.92$ & $0.614 \pm 0.008$ & $0.420 \pm 0.009$ & $44.64 \pm 2.14$\\
+
+GA & Sim. & $19.65 \pm 7.60$ & $63.20 \pm 3.14$ & $0.595 \pm 0.002$ & $0.402 \pm 0.023$ & $5.92 \pm 0.16$\\
+
+GA & Seq. & $31.03 \pm 12.73$ & $64.25 \pm 3.65$ & $0.599 \pm 0.003$ & $0.416 \pm 0.014$ & $6.93 \pm 0.28$\\
+
+Fed-EMNU & Sim. & $8.42 \pm 5.99$ & $72.00 \pm 0.54$ & $0.580 \pm 0.005$ & $0.320 \pm 0.008$ & $27.55 \pm 1.17$\\
+
+Fed-EMNU & Seq. & $5.98 \pm 3.39$ & $72.70 \pm 0.20$ & $0.574 \pm 0.015$ & $0.310 \pm 0.010$ & $42.13 \pm 0.06$\\
+
+UNSIR-style & Sim. & $7.65 \pm 4.55$ & $69.20 \pm 0.67$ & $0.563 \pm 0.009$ & $0.366 \pm 0.006$ & $17.37 \pm 0.62$\\
+
+UNSIR-style & Seq. & $5.63 \pm 6.98$ & $71.61 \pm 0.64$ & $0.562 \pm 0.027$ & $0.323 \pm 0.014$ & $23.06 \pm 0.69$\\
+
+\bottomrule\end{tabular}\end{table}
+
+For Fed-EMNU, sequential final FA is $3.27 \pm 4.71$\% under IID and $5.98 \pm 3.39$\% under Non-IID. The corresponding RA is $75.72 \pm 0.21$\% and $72.70 \pm 0.20$\%. These cumulative averages must not hide an individual target that remains predictable. Class-specific posteriors and attacks are retained in each event artifact.
+
+\begin{table}[H]\centering\small
+
+\caption{Fed-EMNU class-specific FA after the second request. Change is class-0 FA after minus before event 2, in percentage points. Negative change indicates further suppression.}
+
+\label{tab:sequence-rebound}
+
+\begin{tabular}{lrrr}\toprule Setting & Class 0 FA (\%) & Class 1 FA (\%) & Class 0 change (pp)\\\midrule
+
+IID & $0.03 \pm 0.06$ & $6.50 \pm 9.35$ & $-7.67 \pm 0.67$\\
+
+Non-IID & $0.33 \pm 0.58$ & $11.63 \pm 6.33$ & $-16.40 \pm 9.85$\\
+
+\bottomrule\end{tabular}\end{table}
+
+None of the six Fed-EMNU paths shows increased class-0 test accuracy after the second event. However, class-1 final accuracy ranges from 1.0\% to 17.3\% under IID and from 4.7\% to 17.1\% under Non-IID; successful suppression of the earlier class therefore does not imply equally effective deletion of the new class. No federated continuation after the two-request outputs was evaluated. Appendix~\ref{sec:continuation} separately studies five retained-only rounds after a single class-0 request; neither study establishes absence of future relearning after an arbitrary request stream.
+
+Fed-EMNU total tensor payload is 926,759,840 bytes for simultaneous revocation and 1,822,062,400 bytes for two sequential events. Local optimizer steps average 2000 versus 3120 under IID and 1988.33 versus 3098.67 under Non-IID. Extra sequential compute and two model exchanges per client must be considered with the utility differences. Actual transport delay and framing remain unmeasured. The fixed two-request order, one target pair and three seeds cannot establish robustness to long request streams or arbitrary request order. PAR is not extended to this protocol.

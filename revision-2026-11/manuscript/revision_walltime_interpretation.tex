@@ -1,0 +1,19 @@
+Across the tested caps, Fed-EMNU has higher mean retained accuracy, but also
+higher mean target accuracy and target attack AUC than the UNSIR-style recipe.
+Fed-minus-UNSIR RA differences at 10/20/30/40 seconds are respectively
+1.41/0.49/0.48/0.39 percentage points under IID and
+4.50/1.81/1.29/1.56 points under Non-IID. Corresponding FA differences are
+6.43/3.67/3.60/3.07 points and 10.07/8.00/8.73/8.53 points.
+Target attack AUC differences range from 0.013 to 0.025 under IID and
+0.022 to 0.035 under Non-IID. Thus the retained-utility gain comes with weaker
+target suppression and greater distinguishability under the declared attack;
+these results do not establish uniform superiority or a privacy advantage.
+
+At wider caps, UNSIR-style often finishes its prescribed recipe early, while
+Fed-EMNU continues more of its larger repair budget. This is a common-resource
+cap comparison of the specified recipes, rather than proof that every recipe
+uses the same actual time or that its budget allocation is optimal. The common
+update-count controls remain necessary for separating the noise objective from
+the recipe budget. Hardware-dependent minibatch stopping also limits exact
+cross-device replication of the achieved step counts. Full per-seed outcomes,
+paired SDs, actual times and stage traces are supplied as numerical evidence.
