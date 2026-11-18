@@ -1,0 +1,29 @@
+\section{PAR Code-Based Comparison Protocol}
+\label{sec:parprotocol}
+The PAR adaptation loads each of the six original CIFAR-10/ResNet18 checkpoints
+and its matching retained-data reference. It retains our $32\times32$ real-image
+preprocessing and normalization to share exact starting weights. Public PAR
+code instead resizes real CIFAR examples to $128\times128$ with its own
+normalization. This is a material adaptation; published numbers are not reused.
+
+Following the inspected source, a generator maps 128-dimensional Gaussian
+latents through a 128-channel $8\times8$ stem, two upsampling stages and
+three-channel Conv/BatchNorm output. Adam at 0.001 minimizes negative target CE
+plus 0.01 times the mean per-image squared L2 norm, for five groups of eight
+updates. Each group reuses its latent batch. ReduceLROnPlateau (factor 0.5,
+patience 2) receives the final loss of each group. The request model is frozen
+in evaluation mode. Eight synthetic batches are extracted in generator training
+mode using a single new latent batch, with target labels and no clipping.
+
+Every client performs one impair epoch on local retained plus synthetic
+examples, followed by equal aggregation; ten rounds then each perform one
+retained-data epoch at every client and equal aggregation. Local Adam uses
+0.001 and resets on each call. Floating states use equal weights, while integer
+BN counters use max for compatibility with the canonical evaluator. We use the
+fixed final repair round; the public code's retained-test best-checkpoint
+selection is not used. Timing additionally includes generator/provenance
+serialization and excludes post-hoc evaluation. Native budgets are preserved
+and reported, rather than interpreted as an equal-compute comparison.
+The frozen adapter, protocol and source hashes accompany each run. Full-paper
+verification and exact published-protocol reproduction remain outstanding.
+

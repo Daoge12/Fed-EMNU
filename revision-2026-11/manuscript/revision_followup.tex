@@ -1,0 +1,101 @@
+\subsection{Completed Follow-Up Experiments}
+
+\label{sec:followup}
+
+The follow-up retains the fixed training recipe and three seeds (42--44). It adds 36 CIFAR-10/ResNet34 stages (six methods in each partition), 30 ResNet18 stages at Dirichlet $\alpha=0.1$ (including controls), and six PAR-code-based events on the original core checkpoints. These extensions do not replace or tune the core results.  Values below are mean $\pm$ sample SD, $n=3$. The PAR comparison uses three-seed core comparators; CIFAR-100 results are in Appendix~\ref{sec:cifar100} and the twenty-client extension is in Appendix~\ref{sec:clients20}.
+
+\begin{table}[H]
+\caption{ResNet34 architecture extension on CIFAR-10 (IID). TV is against the corresponding ResNet34 retained-data reference.}
+\label{tab:r34-iid}
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & FA (\%) & RA (\%) & Target AUC & TV & Time (s)\\
+\midrule
+Original & $77.17 \pm 1.93$ & $73.00 \pm 0.28$ & $0.643 \pm 0.010$ & --- & $1185.13 \pm 159.23$\\
+Retrain & $0.00 \pm 0.00$ & $74.48 \pm 0.06$ & $0.511 \pm 0.016$ & $0.000 \pm 0.000$ & $1073.87 \pm 146.93$\\
+Finetune & $73.13 \pm 0.38$ & $73.12 \pm 0.25$ & $0.651 \pm 0.018$ & $0.312 \pm 0.005$ & $57.84 \pm 1.15$\\
+GA & $14.20 \pm 1.49$ & $67.70 \pm 0.67$ & $0.603 \pm 0.011$ & $0.341 \pm 0.006$ & $7.79 \pm 0.14$\\
+Fed-EMNU & $5.40 \pm 0.82$ & $74.67 \pm 0.61$ & $0.600 \pm 0.018$ & $0.261 \pm 0.002$ & $54.51 \pm 0.38$\\
+UNSIR-style & $2.27 \pm 0.42$ & $74.06 \pm 0.65$ & $0.592 \pm 0.015$ & $0.262 \pm 0.007$ & $31.02 \pm 0.31$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\caption{ResNet34 architecture extension on CIFAR-10 (Non-IID, $\alpha=0.5$). TV is against the corresponding ResNet34 retained-data reference.}
+\label{tab:r34-noniid}
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & FA (\%) & RA (\%) & Target AUC & TV & Time (s)\\
+\midrule
+Original & $69.63 \pm 10.59$ & $68.93 \pm 0.72$ & $0.625 \pm 0.005$ & --- & $911.10 \pm 149.88$\\
+Retrain & $0.00 \pm 0.00$ & $69.20 \pm 0.64$ & $0.505 \pm 0.026$ & $0.000 \pm 0.000$ & $762.58 \pm 10.36$\\
+Finetune & $68.97 \pm 7.60$ & $71.20 \pm 0.66$ & $0.641 \pm 0.006$ & $0.344 \pm 0.003$ & $37.90 \pm 0.63$\\
+GA & $14.90 \pm 5.26$ & $63.60 \pm 1.84$ & $0.605 \pm 0.005$ & $0.366 \pm 0.015$ & $5.67 \pm 0.22$\\
+Fed-EMNU & $8.67 \pm 1.36$ & $72.39 \pm 1.37$ & $0.609 \pm 0.017$ & $0.310 \pm 0.017$ & $37.29 \pm 0.50$\\
+UNSIR-style & $10.10 \pm 7.01$ & $70.94 \pm 1.03$ & $0.595 \pm 0.021$ & $0.333 \pm 0.016$ & $19.96 \pm 0.62$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This within-family architecture extension does not establish architecture independence. The same fixed recipe is evaluated without test-based retuning; its utility, forgetting and attack values must be considered jointly.
+
+\begin{table}[H]
+\caption{Stronger heterogeneity on CIFAR-10/ResNet18 ($\alpha=0.1$). Low initial utility limits the interpretation of low final FA.}
+\label{tab:alpha01}
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & FA (\%) & RA (\%) & Target AUC & TV & Time (s)\\
+\midrule
+Original & $42.67 \pm 40.93$ & $40.57 \pm 7.79$ & $0.591 \pm 0.039$ & --- & $503.77 \pm 7.23$\\
+Retrain & $0.00 \pm 0.00$ & $39.38 \pm 11.81$ & $0.492 \pm 0.014$ & $0.000 \pm 0.000$ & $459.88 \pm 9.79$\\
+Finetune & $47.87 \pm 34.35$ & $49.80 \pm 3.17$ & $0.592 \pm 0.029$ & $0.463 \pm 0.032$ & $11.86 \pm 3.78$\\
+GA & $10.30 \pm 17.32$ & $39.89 \pm 6.67$ & $0.558 \pm 0.044$ & $0.383 \pm 0.072$ & $3.08 \pm 0.21$\\
+Fed-EMNU & $1.87 \pm 2.31$ & $40.81 \pm 11.25$ & $0.547 \pm 0.010$ & $0.597 \pm 0.114$ & $11.63 \pm 3.80$\\
+UNSIR-style & $3.70 \pm 5.15$ & $40.21 \pm 13.40$ & $0.561 \pm 0.019$ & $0.608 \pm 0.159$ & $6.51 \pm 1.91$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At $\alpha=0.1$, Original RA is $40.57 \pm 7.79$\%, Retrain RA is $39.38 \pm 11.81$\%, and Fed-EMNU RA is $40.81 \pm 11.25$\%. Poor retained utility is therefore present before unlearning. Fed-EMNU target AUC is $0.547 \pm 0.010$, versus $0.492 \pm 0.014$ for Retrain. Confidence minus random RA at $rt=0.5$ is $-3.24 \pm 1.02$ percentage points and TV changes by $0.035 \pm 0.022$. These controls again provide no support for a confidence-ranking advantage.
+
+The Fed-EMNU event includes 4, 5, 7 target-holding clients for seeds 42, 43 and 44, respectively. Replacing the global state with updates from only those clients can omit unaffected-client contributions. This is a protocol limitation under sparse target ownership; it is not evidence of robust heterogeneity handling.
+
+\begin{table}[H]
+\caption{PAR-code-based adaptation on the original three shared core ResNet18 checkpoints (IID). Native method budgets differ; this is not an equal-compute ablation.}
+\label{tab:par-iid}
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & FA (\%) & RA (\%) & Target AUC & TV & Time (s)\\
+\midrule
+Retrain & $0.00 \pm 0.00$ & $74.34 \pm 0.59$ & $0.515 \pm 0.015$ & $0.000 \pm 0.000$ & $428.59 \pm 2.64$\\
+Fed-EMNU & $7.70 \pm 0.70$ & $75.29 \pm 0.05$ & $0.614 \pm 0.021$ & $0.255 \pm 0.003$ & $19.92 \pm 0.34$\\
+UNSIR-style & $4.37 \pm 1.56$ & $74.79 \pm 0.19$ & $0.598 \pm 0.027$ & $0.262 \pm 0.005$ & $12.67 \pm 1.53$\\
+PAR adaptation & $63.00 \pm 2.70$ & $74.76 \pm 0.33$ & $0.669 \pm 0.007$ & $0.295 \pm 0.003$ & $52.53 \pm 0.27$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\caption{PAR-code-based adaptation on the original three shared core ResNet18 checkpoints (Non-IID, $\alpha=0.5$). Native method budgets differ; this is not an equal-compute ablation.}
+\label{tab:par-noniid}
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & FA (\%) & RA (\%) & Target AUC & TV & Time (s)\\
+\midrule
+Retrain & $0.00 \pm 0.00$ & $69.41 \pm 0.53$ & $0.478 \pm 0.024$ & $0.000 \pm 0.000$ & $424.14 \pm 3.79$\\
+Fed-EMNU & $16.73 \pm 10.42$ & $72.15 \pm 0.94$ & $0.598 \pm 0.005$ & $0.316 \pm 0.006$ & $22.15 \pm 0.57$\\
+UNSIR-style & $4.83 \pm 4.32$ & $70.63 \pm 1.07$ & $0.583 \pm 0.002$ & $0.329 \pm 0.013$ & $11.94 \pm 0.31$\\
+PAR adaptation & $54.23 \pm 5.81$ & $72.14 \pm 0.47$ & $0.650 \pm 0.021$ & $0.343 \pm 0.007$ & $53.51 \pm 0.63$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Under this code-based adaptation, PAR retains substantial target-class accuracy and its target MIA AUC remains above Retrain in both partitions. The ten repair rounds can restore utility and target behavior together; the experiment does not isolate that mechanism causally. These outcomes describe the specified shared-checkpoint adaptation, not a reproduction or refutation of the published PAR results.
+
+PAR uses about $9.974$ GB of model and synthetic tensor payload per event (decimal units; transport framing excluded). It communicates one model download and upload per client at each of eleven aggregations. Its native multi-round budget, generator, learning rates, equal event aggregation and all-client participation differ jointly from Fed-EMNU. Paired comparisons record time, local optimizer steps and payload; observed differences cannot be assigned to one component.

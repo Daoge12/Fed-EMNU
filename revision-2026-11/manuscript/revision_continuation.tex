@@ -1,0 +1,54 @@
+\subsection{Retained-Only Federated Training after Revocation}
+
+\label{sec:continuation}
+
+To test subsequent behavioral recovery, each class-0 output of Fed-EMNU, UNSIR-style and Finetune receives five additional federated rounds using only retained data. The independently trained retained-data reference continues from its own saved state with the same additional budget. This continued reference is not a newly initialized retraining run. CIFAR-10/ResNet18, ten clients, IID and Dirichlet $\alpha=0.5$, seeds 42--44 are used.
+
+Class 0 remains quarantined at every client throughout continuation. Each new round selects four clients with a common seed-specific schedule generated from seed $+70000$, and applies five local epochs with fresh Adam at 0.01 and batch size 128. Local shuffling uses seed $+50000+10t+i$ for zero-based round $t$ and client $i$. Each continuation loads the corresponding parent state. Parent and final accuracy are recomputed from predictions; attacks share historical-member splits and use the same declared calibration procedure. TV is against the continued reference. Values are mean $\pm$ sample SD, $n=3$.
+
+\begin{table}[H]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+
+\caption{IID retained-only continuation. FA/RA changes are final minus parent, in percentage points; all other columns are final values.}
+
+\label{tab:continuation-iid}
+
+\begin{tabular}{lrrrrrr}\toprule Parent & FA (\%) & RA (\%) & $\Delta$FA (pp) & $\Delta$RA (pp) & Target AUC & TV\\\midrule
+
+Retained reference & $0.00 \pm 0.00$ & $74.92 \pm 0.44$ & $0.00 \pm 0.00$ & $0.58 \pm 0.33$ & $0.500 \pm 0.017$ & 0 (self)\\
+
+Finetune & $0.00 \pm 0.00$ & $75.25 \pm 0.21$ & $-77.90 \pm 0.26$ & $1.29 \pm 0.38$ & $0.647 \pm 0.007$ & $0.252 \pm 0.006$\\
+
+Fed-EMNU & $0.00 \pm 0.00$ & $74.83 \pm 0.13$ & $-7.70 \pm 0.70$ & $-0.46 \pm 0.17$ & $0.628 \pm 0.024$ & $0.253 \pm 0.003$\\
+
+UNSIR-style & $0.03 \pm 0.06$ & $75.27 \pm 0.16$ & $-4.33 \pm 1.56$ & $0.48 \pm 0.28$ & $0.633 \pm 0.006$ & $0.250 \pm 0.005$\\
+
+\bottomrule\end{tabular}\end{table}
+
+Under IID, Fed-EMNU target AUC changes from $0.614 \pm 0.021$ to $0.628 \pm 0.024$, while the continued reference has AUC $0.500 \pm 0.017$. The final paired AUC difference from the continued reference is $0.128 \pm 0.039$. Continued training is additional compute: Fed-EMNU continuation takes $46.64 \pm 1.96$ s, excluding the original unlearning event, evaluation and real transport. The continuation wrapper does not measure transport payload; its empty communication record must not be interpreted as zero network traffic.
+
+\begin{table}[H]\centering\scriptsize\setlength{\tabcolsep}{3pt}
+
+\caption{Non-IID retained-only continuation. FA/RA changes are final minus parent, in percentage points; all other columns are final values.}
+
+\label{tab:continuation-noniid}
+
+\begin{tabular}{lrrrrrr}\toprule Parent & FA (\%) & RA (\%) & $\Delta$FA (pp) & $\Delta$RA (pp) & Target AUC & TV\\\midrule
+
+Retained reference & $0.00 \pm 0.00$ & $68.44 \pm 1.76$ & $0.00 \pm 0.00$ & $-0.97 \pm 1.96$ & $0.513 \pm 0.037$ & 0 (self)\\
+
+Finetune & $0.10 \pm 0.10$ & $69.94 \pm 0.19$ & $-68.17 \pm 7.16$ & $-1.06 \pm 0.48$ & $0.603 \pm 0.017$ & $0.300 \pm 0.022$\\
+
+Fed-EMNU & $0.37 \pm 0.64$ & $69.99 \pm 0.98$ & $-16.37 \pm 9.79$ & $-2.16 \pm 1.68$ & $0.616 \pm 0.030$ & $0.300 \pm 0.023$\\
+
+UNSIR-style & $0.10 \pm 0.17$ & $70.35 \pm 0.28$ & $-4.73 \pm 4.15$ & $-0.28 \pm 1.01$ & $0.605 \pm 0.013$ & $0.299 \pm 0.019$\\
+
+\bottomrule\end{tabular}\end{table}
+
+Under Non-IID, Fed-EMNU target AUC changes from $0.598 \pm 0.005$ to $0.616 \pm 0.030$, while the continued reference has AUC $0.513 \pm 0.037$. The final paired AUC difference from the continued reference is $0.104 \pm 0.015$. Continued training is additional compute: Fed-EMNU continuation takes $42.63 \pm 3.81$ s, excluding the original unlearning event, evaluation and real transport. The continuation wrapper does not measure transport payload; its empty communication record must not be interpreted as zero network traffic.
+
+Class-0 FA increases in 0 of the six Fed-EMNU continuations. This is a finite-horizon behavioral check under strict quarantine, not evidence of equality to retraining or a privacy guarantee. In particular, suppressed target accuracy can coexist with membership scores different from the continued reference. This experiment does not test reintroduction of revoked data, arbitrary future training, device failures or long request streams. No general no-relearning claim follows.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{additional_continuation.pdf}
+\caption{Fed-EMNU FA and RA immediately after unlearning and after five retained-only FL rounds, mean $\pm$ sample SD across three seeds. Only these two endpoints are shown; no intermediate-round trajectory is inferred. Class 0 remains quarantined; the comparison does not establish unrestricted future-training behavior.}
+\label{fig:additional-continuation}\end{figure}

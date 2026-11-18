@@ -1,0 +1,77 @@
+\subsection{Controlled Noise Objectives and Event Aggregation}
+\label{sec:round2-controls}
+The second-round controls use the original CIFAR-10/ResNet18 checkpoints and
+references for seeds 42--44 in both partitions. All controls retain the full
+local retained set and use the same random ordering, local learning rates and
+attack splits. This explicitly removes the mode-dependent automatic ordering
+used in the primary recipes. The high budget has 80 server noise steps and
+three repair epochs; the low budget has 40 steps and one repair epoch. One
+impair epoch is used throughout. At each budget, Fed and UNSIR differ only in
+the norm penalty defined in Section~\ref{sec:noise}. Realized local optimizer
+steps are identical within each paired budget. These are matched update
+budgets, not enforced equal wall-clock times or the centralized UNSIR protocol.
+The Gaussian control omits noise optimization; equal weights changes only
+request-event aggregation. Both otherwise follow Fed high. Gaussian saves
+server steps and is not equal compute. No result was used to tune a budget.
+Values are mean $\pm$ sample SD across three paired scientific seeds.
+\begin{table}[H]\centering\scriptsize\setlength{\tabcolsep}{4pt}
+\caption{Second-round IID controls ($n=3$). Steps count local model updates; server steps are specified in the text.}
+\label{tab:round2-iid}\begin{tabular}{lrrrrrr}\toprule Variant & FA (\%) & RA (\%) & Target AUC & TV & Steps & Time (s)\\\midrule
+Fed high & $7.70 \pm 0.70$ & $75.29 \pm 0.05$ & $0.614 \pm 0.021$ & $0.255 \pm 0.003$ & $1640 \pm 0$ & $21.47 \pm 0.52$\\
+UNSIR high & $7.50 \pm 1.21$ & $75.23 \pm 0.37$ & $0.615 \pm 0.014$ & $0.254 \pm 0.004$ & $1640 \pm 0$ & $21.38 \pm 0.69$\\
+Fed low & $5.07 \pm 0.45$ & $74.79 \pm 0.49$ & $0.594 \pm 0.022$ & $0.260 \pm 0.007$ & $920 \pm 0$ & $12.58 \pm 0.18$\\
+UNSIR low & $4.37 \pm 1.56$ & $74.79 \pm 0.19$ & $0.598 \pm 0.027$ & $0.262 \pm 0.005$ & $920 \pm 0$ & $11.97 \pm 0.36$\\
+Gaussian & $11.17 \pm 2.75$ & $75.72 \pm 0.06$ & $0.643 \pm 0.010$ & $0.252 \pm 0.003$ & $1640 \pm 0$ & $21.22 \pm 0.30$\\
+Equal weights & $7.70 \pm 0.70$ & $75.29 \pm 0.05$ & $0.614 \pm 0.021$ & $0.255 \pm 0.003$ & $1640 \pm 0$ & $22.44 \pm 0.47$\\
+\bottomrule\end{tabular}\end{table}
+\begin{table}[H]\centering\scriptsize\setlength{\tabcolsep}{4pt}
+\caption{Second-round Non-IID controls ($n=3$). Steps count local model updates; server steps are specified in the text.}
+\label{tab:round2-noniid}\begin{tabular}{lrrrrrr}\toprule Variant & FA (\%) & RA (\%) & Target AUC & TV & Steps & Time (s)\\\midrule
+Fed high & $13.97 \pm 13.19$ & $72.09 \pm 1.00$ & $0.604 \pm 0.013$ & $0.319 \pm 0.007$ & $1628 \pm 0$ & $23.30 \pm 0.46$\\
+UNSIR high & $14.20 \pm 13.63$ & $72.56 \pm 1.12$ & $0.591 \pm 0.006$ & $0.317 \pm 0.008$ & $1628 \pm 0$ & $22.26 \pm 0.57$\\
+Fed low & $4.50 \pm 2.84$ & $70.27 \pm 1.30$ & $0.585 \pm 0.011$ & $0.333 \pm 0.016$ & $914 \pm 0$ & $13.13 \pm 0.07$\\
+UNSIR low & $4.83 \pm 4.32$ & $70.63 \pm 1.07$ & $0.583 \pm 0.002$ & $0.329 \pm 0.013$ & $914 \pm 0$ & $12.51 \pm 0.47$\\
+Gaussian & $11.47 \pm 0.90$ & $72.42 \pm 0.82$ & $0.626 \pm 0.006$ & $0.316 \pm 0.017$ & $1628 \pm 0$ & $21.85 \pm 0.28$\\
+Equal weights & $13.37 \pm 13.18$ & $71.20 \pm 0.80$ & $0.596 \pm 0.019$ & $0.336 \pm 0.014$ & $1628 \pm 0$ & $21.92 \pm 1.23$\\
+\bottomrule\end{tabular}\end{table}
+\input{revision_round2_interpretation.tex}
+\subsection{Robust Timing Summaries and Outlier Investigation}
+\label{sec:round2-timing}
+Table~\ref{tab:robust-time} supplements the original mean/SD tables with medians
+and quartiles from the same five primary seeds, retaining every observation.
+Quartiles use linear interpolation. These seed-level times include changes in
+partition/schedule and execution conditions; they are not identical-workload
+technical repetitions. Historical hardware telemetry is unavailable, so a
+specific cause of the old outlier cannot be established from saved times.
+\begin{table}[H]\centering\small
+\caption{Original primary compute/serialization time in seconds, five seeds;
+median [first, third quartile]. Evaluation and network transport excluded.}
+\label{tab:robust-time}\begin{tabular}{llrr}\toprule
+Setting & Method & Median [Q1, Q3] & Range\\\midrule
+IID & Retrain & 431.25 [428.54, 477.27] & 425.97--651.38\\
+IID & Fed-EMNU & 20.20 [20.00, 21.98] & 19.54--30.44\\
+IID & UNSIR-style & 11.81 [11.76, 14.44] & 11.32--17.36\\
+Non-IID & Retrain & 427.62 [424.71, 429.82] & 420.10--2310.15\\
+Non-IID & Fed-EMNU & 22.44 [21.48, 22.52] & 21.39--114.20\\
+Non-IID & UNSIR-style & 12.20 [12.03, 12.41] & 11.60--63.40\\
+\bottomrule\end{tabular}\end{table}
+The historical delay was not confined to Fed-EMNU: Non-IID seed 45 also
+took 2310.15 s for retraining (other seeds 420.10--429.82 s)
+and 63.40 s for the UNSIR-style event. This cross-method pattern
+documents a broader timing anomaly, without identifying its cause.
+For the Non-IID seed-42 checkpoint, three exact-recipe technical repeats
+took a median 23.03 s (range 22.99--24.20 s),
+compared with 22.44 s in the original session.
+The maximum posterior difference from that original result was 0;
+the maximum predicted-label disagreement was 0.000\%.
+For the Non-IID seed-45 checkpoint, three exact-recipe technical repeats
+took a median 25.76 s (range 25.48--26.13 s),
+compared with 114.20 s in the original session.
+The maximum posterior difference from that original result was 0;
+the maximum predicted-label disagreement was 0.000\%.
+These repeats use the current driver/session and are reported separately,
+without replacing or pooling the historical measurements. They test whether
+the saved workload consistently reproduces the large delay, but cannot identify
+the historical cause. Three repeats per checkpoint are technical replicates,
+not additional independent seeds. Compute time still excludes end-to-end
+federated transport, energy and deployment overhead.

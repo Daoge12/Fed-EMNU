@@ -1,0 +1,42 @@
+\textbf{Objective and budget controls.} At the high budget, the paired
+Fed-minus-UNSIR RA difference is $0.063\pm0.371$ percentage points under IID
+and $-0.463\pm0.361$ under Non-IID. At the low budget, the corresponding
+differences are $-0.004\pm0.306$ and $-0.356\pm0.222$ points. Paired FA
+differences are $0.200\pm1.735$ and $-0.233\pm0.451$ points at the high
+budget, and $0.700\pm1.480$ and $-0.333\pm1.856$ at the low budget.
+Thus, the common-budget controls do not support a consistent retained-utility
+advantage of the unsquared whole-tensor penalty. In the three Non-IID pairs,
+the squared-penalty adaptation has higher retained accuracy at both budgets.
+The primary recipe's RA advantage therefore cannot be attributed to the
+Fed-EMNU penalty alone. These descriptive results do not establish population
+equivalence or isolate the separate effects of increasing noise and repair
+budgets, which change together between low and high.
+
+\textbf{Optimized versus Gaussian inputs.} Fed high minus Gaussian changes
+FA by $-3.467\pm3.200$ points under IID, but by $2.500\pm12.322$ under
+Non-IID. RA differences are $-0.430\pm0.107$ and $-0.330\pm0.195$ points.
+Optimization improves mean class suppression in this IID control but does
+not establish a robust benefit across partitions. The large Non-IID variation
+and the absence of a retained-utility gain argue against claiming that noise
+optimization is uniformly effective for these accuracy metrics. Target attack
+AUC decreases relative to Gaussian inputs by $0.029\pm0.012$ under IID and
+$0.022\pm0.018$ under Non-IID, with a decrease in all three pairs in each
+partition. This is a favorable outcome for the declared attack, alongside the
+mixed accuracy results; it does not establish a privacy guarantee. Neither noise choice demonstrates
+verified deletion; the reported target attack and reference distances remain
+necessary diagnostics.
+
+\textbf{Event aggregation.} Equal retained counts make weighted and equal
+event aggregation identical under IID; saved posterior arrays are exactly
+equal in all three pairs. Under Non-IID, retained-count weighting increases
+RA by $0.896\pm0.224$ points and FA by $0.600\pm0.557$ relative to equal
+weighting. This supports a limited utility--suppression trade-off for the
+stated event rule, not a general aggregation advantage. It does not resolve
+the omission of separate repair contributions from non-target holders in
+sparse-owner settings.
+
+Taken together, the new controls strengthen attribution and expose negative
+evidence. They support describing a particular empirical recipe and its
+operating limits rather than a newly established superior noise principle.
+Only three paired scientific seeds are used per partition; no multiple-testing
+adjustment or formal equivalence claim is made.

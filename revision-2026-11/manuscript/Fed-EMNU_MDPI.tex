@@ -1,0 +1,813 @@
+% !TeX program = pdflatex
+% Revision working source. Numerical evidence is generated only from saved runs.
+\documentclass[software,article,submit,moreauthors]{Definitions/mdpi}
+\firstpage{1}
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\hreflink{}
+\doinum{}
+\datereceived{}
+\daterevised{}
+\dateaccepted{}
+\datepublished{}
+\renewcommand{\papercitation}{Manuscript submitted to Software.}
+\usepackage{amsmath,amssymb,amsthm,graphicx,booktabs,algorithm,algorithmic,url}
+\graphicspath{{figures/}}
+\setlength{\emergencystretch}{2em}
+\newcommand{\CE}{\mathcal{L}_{\mathrm{CE}}}
+\newcommand{\Drs}{D_{rs}}
+
+\Title{Fed-EMNU: Federated Error-Maximizing Noise for Approximate Class Suppression}
+\Author{Jiale Wang $^{1}$, Zixiao Liu $^{2}$ and Jianhua Wang $^{3,}$*}
+\AuthorNames{Jiale Wang, Zixiao Liu and Jianhua Wang}
+\address{$^{1}$ \quad College of Intelligent Systems Science and Engineering,
+Harbin Engineering University, Harbin 150001, China; wangjiale03082006@163.com\\
+$^{2}$ \quad College of Software, Taiyuan University of Technology, Taiyuan
+030021, China; 2024006625@link.tyut.edu.cn\\
+$^{3}$ \quad School of Computer Science and Technology (Big Data Institute),
+Taiyuan University of Technology, Taiyuan 030021, China;
+wangjianhua02@tyut.edu.cn\\
+$*$ \quad Correspondence: wangjianhua02@tyut.edu.cn}
+
+\abstract{The ``Right to be Forgotten'' has spurred interest in machine
+unlearning (MU), enabling data owners to request removal of their data's
+influence from trained models. While many MU methods focus on centralized
+settings, federated learning (FL) introduces distributed ownership and limited
+data access. We study Fed-EMNU, a class-level federated adaptation of prior
+error-maximizing-noise impair--repair methods. The server generates synthetic
+inputs; affected clients perform local unlearning and enhancement using
+retained data before server aggregation. Five-seed CIFAR-10 experiments yield
+forget accuracy of $6.80\pm1.35$\% and retained accuracy of $75.24\pm0.08$\%
+under IID partitions, with a paired retraining-to-method compute-time ratio of
+$21.54\pm0.35$. The UNSIR-style adaptation is faster and has lower target-class
+accuracy, while Fed-EMNU has higher mean retained accuracy. The main comparison
+uses all retained data; separate matched half-subset experiments do not support
+a confidence-ranking advantage over random selection. Non-IID and additional
+dataset, architecture, client-count and request/training-horizon studies expose
+limits of the fixed recipe. A PAR-code-based comparison is reported with its
+adaptation boundary. New three-seed controls at matched update budgets do
+not support a consistent retained-utility advantage of the Fed-EMNU noise
+penalty. Optimized noise lowers the declared target attack AUC relative to
+Gaussian inputs but has mixed accuracy effects; event weighting shows a limited utility--suppression
+trade-off. Additional common-time-cap comparisons at 10--40 seconds show
+higher mean retained utility alongside higher target accuracy and attack AUC,
+without uniform superiority. Residual target behavior and membership differences from
+retraining restrict the method to approximate class suppression, without a
+formal privacy or deletion guarantee. The original implementation is available
+at \url{https://github.com/Daoge12/Fed-EMNU}.}
+\keyword{federated learning; approximate unlearning; class revocation;
+error-maximizing noise; retained-data selection}
+
+\begin{document}
+
+\fancypagestyle{plain}{\fancyhf{}
+\fancyfoot[L]{\footnotesize Version \today\ submitted to \emph{Software}}
+\fancyfoot[R]{\footnotesize Revised manuscript}
+\renewcommand{\footrulewidth}{0.4pt}}
+\rfoot{\footnotesize Revised manuscript}
+\maketitle
+\section{Introduction}
+
+
+With the widespread adoption of machine learning technologies in fields such as
+economics, healthcare, energy, and industry, an increasing amount of data has
+been utilized to train intelligent models. However, these data often contain a
+substantial amount of personal and sensitive information. In recent years, the
+proposal of the Right to be Forgotten \cite{ref1} has drawn renewed attention to
+data controllability and privacy protection, giving rise to the emerging
+research paradigm of machine unlearning. Machine unlearning aims to empower
+users with the ability to request removal of their personal data's influence
+from public datasets or pre-trained models, while maintaining the model's
+performance on the remaining tasks as much as possible.
+
+In this paper, we conduct research on model training and unlearning under the
+premise that raw data are not shared. Specifically, we focus on the Federated
+Learning (FL) \cite{ref2,ref3,ref4,ref5,ref6,ref7} framework---a distributed
+machine learning paradigm that allows multiple clients to keep their private
+data locally while participating in global model training by uploading only
+model parameters or gradients. This mechanism enables cross-domain collaborative modeling without sharing raw
+examples, but does not itself guarantee privacy against inference or gradient
+reconstruction attacks. However, the non-sharing nature of
+data also introduces new challenges for model updating and unlearning, making it
+more difficult to efficiently remove the influence of designated data while
+preserving privacy.
+
+Removing specific data samples from a pre-trained federated learning (FL) model
+can be naively approached by retraining a new model from scratch on the
+remaining dataset, excluding the target samples. However, for real-world models
+trained over long periods with large datasets, this strategy can be
+computationally expensive.
+
+There are two main strategies for achieving unlearning without naively
+retraining the model---exact unlearning and approximate unlearning. Exact unlearning aims to match the distribution of models obtained by
+retraining without the requested records, under the assumptions of the learning
+procedure. This is stronger than low target-class prediction accuracy. Previous studies
+\cite{ref8,ref9,ref10,ref11,ref12} have proposed machine unlearning methods for
+structured model classes, including linear and tree-based models. Their
+assumptions do not automatically extend to deep federated networks\cite{ref13}.
+
+The goal of approximate unlearning is to improve the efficiency of machine
+unlearning \cite{ref8,ref14}, by minimizing the impact of specific data samples,
+though it may not fully eliminate their influence. This process is typically
+achieved through approximate methods, which may sacrifice precision in exchange
+for reduced computational cost. Related approaches\cite{ref13,ref15,ref16} have different model, data-access
+and update-history requirements; these must be stated when comparing methods. However, studies have shown that attackers
+can exploit gradients uploaded by clients, such as through gradient leakage
+attacks \cite{ref17,ref18}. Consequently, data locality and computational efficiency must be distinguished
+from privacy guarantees.
+
+In the case of Independent and Identically Distributed (IID) data, local
+retained subsets may more closely represent the global distribution. Due to the consistent
+data distribution, the model after the unlearning operation can maintain
+relatively stable performance across most classes. However, despite this, the
+model may still experience slight accuracy degradation during the unlearning
+process, especially when large-scale adjustments are required. The magnitude of any accuracy change and the remaining membership information
+must be measured, rather than inferred from the partition type.
+
+In contrast, the challenges of approximate unlearning are more pronounced in the
+case of Non-IID (Non-Independent and Identically Distributed) data. In this
+scenario, the distribution of data samples varies significantly across different
+clients, meaning that the model may rely more heavily on features from specific
+subsets of data for certain classes. During approximate unlearning, it may not
+be possible to completely remove the influence of certain class data, resulting
+in a noticeable decline in model performance for some classes after unlearning.
+This is particularly true when the data for the class to be forgotten has a
+significant impact on the model during training, and the Non-IID nature of the
+data makes it difficult to effectively eliminate this influence, leading to
+reduced generalization ability on other classes.
+
+
+To study alternatives to retained-data retraining, we evaluate Fed-EMNU as a
+specified federated adaptation of existing error-maximizing-noise and
+impair--repair techniques. UNSIR~\cite{ref20} supplies the underlying noise-based
+mechanism, and PAR~\cite{ref21} already combines perturbation and restoration
+in a federated setting. Our scientific question is whether the particular
+noise objective, local update budget and affected-client aggregation used here
+produce a useful suppression--utility--cost trade-off. Combining these elements
+does not by itself establish a new optimization principle or a deletion guarantee.
+
+\textbf{The contributions and their evidence boundaries are as follows:}
+\begin{itemize}
+\item We specify an implementable federated class-suppression protocol,
+including request scope, synthetic labels, a shared request-time checkpoint,
+client-local updates and retained-count-weighted aggregation. This is a
+workflow specification and adaptation of prior mechanisms; requester-level
+scope is defined but only global class requests are experimentally evaluated.
+\item We examine the recipe's components with stage-removal controls,
+noise-optimization and event-weighting controls, and within-budget comparisons
+of the two noise objectives. These experiments test particular implementation
+choices rather than assuming integration is beneficial. Confidence-ranked
+selection is an optional mechanism whose advantage is not supported by the
+matched subset results.
+\item We provide reference-based measurements of target suppression, retained
+utility, membership behavior and compute time, together with explicit failure
+cases across datasets, heterogeneity and client counts. The released
+configurations, logs, predictions and analysis scripts support verification
+of the empirical findings; reproducibility is not evidence of algorithmic novelty.
+\end{itemize}
+
+Section 2 describes Fed-EMNU and its relationship to the closest methods.
+Section 3 evaluates the framework and reports the additional studies. Section 4
+presents the conclusions and limitations.
+
+\section{Methodology}
+\label{sec:method}
+
+Upon receiving an unlearning request for a specific class, the server generates
+optimized noise against the request-time model. The noise is combined with a
+selected portion of remaining local data for unlearning, followed by enhancement
+on the same retained subset. Below we clarify the objective, labels, selection
+and server update needed to make this process reproducible.
+
+\subsection{Problem Statement}
+\label{sec:scope}
+Let $D=\bigcup_{i=1}^{M}D_i$ denote disjoint client training datasets with labels
+in $\mathcal{Y}=\{0,\ldots,K-1\}$. A trained global model has parameters
+$\theta_0$ and posterior vector $p_{\theta_0}(\cdot\mid x)$. A request specifies
+target classes $\mathcal{Y}_f$ and a set of affected clients $A$. Define
+\begin{equation}
+D_{f,i}=\begin{cases}\{(x,y)\in D_i:y\in\mathcal{Y}_f\},&i\in A,\\
+\emptyset,&i\notin A,\end{cases}
+\qquad D_{r,i}=D_i\setminus D_{f,i}.
+\label{eq:request}
+\end{equation}
+For global class revocation, $A$ includes every client holding the target class;
+the requested records are removed across the federation. For requester-level
+revocation, $A=\{q\}$ contains only the requesting client. The latter does not
+remove other clients' records in the same class, so low global target-class
+accuracy is not its defining success criterion.
+
+Write $\theta^{-f}=\operatorname{Train}(\{D_{r,i}\},\xi)$ for a reference
+obtained from a fresh random initialization using a recorded training procedure
+and seed $\xi$. It uses the original partition and client schedule, omits exactly
+the requested records, and has a disclosed fixed training budget. It never starts
+from $\theta_0$. Independent training randomness makes it a stochastic reference;
+one reference draw cannot establish equality of model distributions.
+
+The approximate output $\theta'$ is assessed by retained utility and behavioral
+similarity to $\theta^{-f}$. We do not impose a uniform target-class probability
+on every input while simultaneously fixing all retained-class probabilities:
+those constraints may conflict with posterior normalization and are unnecessary
+for the reference-based evaluation.
+
+\subsection{Federated Error-Maximizing Noise Unlearning}
+\label{sec:protocol}
+As shown in Figure~\ref{fig:overview}, Fed-EMNU generates error-maximizing noise
+and combines it with remaining data for local training. The server distributes
+the same request checkpoint to all affected clients, then aggregates their
+returned states. All participating clients therefore update a common starting
+model within the same coordinated event.
+
+During pretraining, a recorded subset $S_t$ participates in round $t$. Clients
+start from the same round checkpoint, perform the configured local optimization,
+and send their states to the server. Floating-point states are aggregated as
+\begin{equation}
+\theta_{t+1}=\sum_{i\in S_t}\frac{|D_i|}{\sum_{j\in S_t}|D_j|}
+\theta_{t+1}^{(i)}.
+\label{eq:fedavg}
+\end{equation}
+Each local call initializes a fresh Adam optimizer; optimizer moments are not
+transmitted or carried between rounds. Local data are shuffled using recorded
+seeds. The standard ResNet stem reduces a $32\times32$ input to a $1\times1$
+final feature map. If a last minibatch has one example, the implementation uses
+stored batch-normalization statistics for that minibatch while still updating
+parameters, rather than discarding the example or estimating an undefined
+single-example variance.
+Batch-normalization integer counters use the maximum participating counter and
+are recorded as state rather than averaged parameters. The sample-weighted
+protocol is an explicit revision from the supplied implementation's equal
+client weighting. Results from the two protocols must not be combined.
+
+For an unlearning event, the server freezes a request-time checkpoint
+$\theta_0$. It generates one synthetic batch per target class and sends the
+checkpoint and batches to every affected client with target examples. Each
+client independently performs selection, impair, and repair from this same
+checkpoint. The server replaces its current state with
+\begin{equation}
+\theta'=\sum_{i\in A_f}\frac{|D_{r,i}|}{\sum_{j\in A_f}|D_{r,j}|}
+\theta_i', \qquad A_f=\{i\in A:|D_{f,i}|>0\}.
+\label{eq:unlearnagg}
+\end{equation}
+This is a heuristic state update, not an algebraic subtraction of historical
+contributions. When $|A_f|=1$, the returned state directly replaces the global
+state. All affected clients must be available in the evaluated global-class
+protocol. Handling unavailable clients or asynchronous requests is outside the
+evaluated setting.
+
+When some clients hold no target examples, Equation~\ref{eq:unlearnagg}
+normalizes weights over $A_f$ only. The shared starting checkpoint already
+contains information learned from all clients; nonparticipation therefore does
+not imply that an unaffected client's knowledge is erased. Nevertheless, the
+event provides no separate contribution or repair update from those clients,
+and the resulting model can be biased toward the retained distributions of
+target holders. This limitation is exposed by the sparse-owner setting in
+Appendix~\ref{sec:followup}. We evaluate the stated heuristic without claiming
+that it preserves unaffected-client utility or implements an exact global
+deletion operation.
+
+Later FL rounds can relearn a revoked contribution if those records are reused.
+The protocol therefore quarantines requested examples before subsequent
+training. Removing a record from the training pool does not prevent learning
+related features from other records. Checkpoints and request identifiers must be
+tracked to prevent stale unlearning updates from overwriting newer global states.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{fig1_overview_revised.png}
+\caption{Explicit coordinated global-class event. Every affected client updates
+the same request-time checkpoint. Raw local examples remain at clients.
+The client workflow is repeated for every target holder; aggregation uses only
+those clients as in Equation~\ref{eq:unlearnagg}.}
+\label{fig:protocol}\label{fig:overview}
+\end{figure}
+
+\subsection{Detail of Fed-EMNU}
+\subsubsection{Noise Generation}
+\label{sec:noise}
+For target class $c$, the server initializes a batch
+$N_c\in\mathbb{R}^{B\times3\times32\times32}$ with independent
+$\mathcal{N}(0,1)$ entries, with $B=128$, and minimizes over $N$
+\begin{equation}
+\min_N\; J_c(N)=-\frac1B\sum_{b=1}^{B}\CE(f_{\theta_0}(N_b),c)
++\lambda\|N\|_2.
+\label{eq:noise}
+\end{equation}
+The cross-entropy term is averaged across the batch, and $\|N\|_2$ is the
+unsquared Euclidean norm of the flattened full tensor. Adam updates only $N$;
+all model parameters and batch-normalization statistics are frozen. The default
+noise schedule contains 10 outer iterations of eight Adam steps, learning rate
+0.1, and $\lambda=0.1$. There is no hard norm bound, projection, or image-range
+clipping. These details match the Fed-EMNU objective under evaluation.
+
+Each synthetic input retains target label $c$ in the impair dataset. The
+negative cross-entropy term encourages larger target-class loss under the frozen
+model, balanced by the norm penalty; the combined optimization need not increase
+cross-entropy monotonically. The subsequent model update minimizes loss on
+these synthetic inputs. This drives a parameter
+change associated with the target decision region. Retained examples and repair
+constrain collateral damage. The mechanism is an empirical heuristic: fitting
+synthetic examples with label $c$ does not mathematically imply deletion of the
+training influence of real examples with label $c$.
+
+\subsubsection{Local Remaining Dataset Selection}
+\label{sec:selection}
+The server is responsible for noise generation, while subsequent unlearning is
+performed by affected clients. To control local computation, a subset of the
+remaining data is selected and reused for unlearning and enhancement.
+
+Each affected client selects a fixed subset $D_{rs,i}\subseteq D_{r,i}$ once per
+request and reuses exactly that subset in both impair and repair. For every
+nonempty local retained class set $D_{r,i,c}$, the count is
+$n_{i,c}=\max(1,\lfloor rt\,|D_{r,i,c}|\rfloor)$, where $0<rt\leq1$.
+Random selection draws without replacement separately within each class.
+
+For confidence selection, the client evaluates the received global model
+$\theta_0$ in evaluation mode at request time. It traverses its local examples
+in deterministic index order and associates each local index $j$ with
+$s_{i,j}=\max_k p_{\theta_0}(k\mid x_{i,j})$. For each retained class, the
+largest $n_{i,c}$ scores are selected, with local index breaking ties. The score
+is the maximum posterior, not necessarily the true-label posterior. Recomputing
+it at request time avoids stale local-model scores and missing scores for a
+client that skipped recent FL rounds.
+
+High confidence can favor easy examples and misclassified examples with a
+confident wrong label. It can under-represent boundary samples and minority
+modes. Selection is therefore a utility heuristic, with stratified random
+selection as its direct control. The implementation saves exact selected indices
+and sample counts, uses no undocumented duplication, and keeps incomplete final
+minibatches.
+
+\subsubsection{Unlearning and Enhancement}
+\label{sec:updates}
+Replicating each optimized batch $r_n$ times produces a synthetic dataset
+$D_{n,c}$ of $B r_n$ examples labeled $c$. The default $r_n$ is 20. Each client
+performs one impair epoch for each requested target class on
+$D_{n,c}\cup D_{rs,i}$, minimizing
+\begin{equation}
+L_{u,i}(\theta)=\frac{1}{|D_{n,c}|+|D_{rs,i}|}
+\sum_{(x,y)\in D_{n,c}\cup D_{rs,i}}\CE(f_\theta(x),y).
+\label{eq:impair}
+\end{equation}
+Minibatches are shuffled and Adam uses learning rate 0.02. Repair then minimizes
+\begin{equation}
+L_{r,i}(\theta)=\frac{1}{|D_{rs,i}|}
+\sum_{(x,y)\in D_{rs,i}}\CE(f_\theta(x),y)
+\label{eq:repair}
+\end{equation}
+for three epochs with Adam at learning rate 0.01. Each impair pass and the repair
+stage initialize fresh optimizers. Multi-class requests use a
+recorded target order; sequential impair passes are distinct from a joint
+multi-class impair pass and are not treated as equivalent. The complete event is
+given in Algorithm~\ref{alg:complete}.
+
+\begin{algorithm}[t]
+\caption{Fed-EMNU event with explicit request scope}
+\label{alg:complete}
+\begin{algorithmic}[1]
+\REQUIRE Checkpoint $\theta_0$, local sets $D_i$, affected clients $A$, target
+classes $\mathcal{Y}_f$, ratio $rt$, seeds and optimization budgets
+\ENSURE Updated server state $\theta'$ and audit records
+\STATE Define $D_{f,i},D_{r,i}$ using Equation~\ref{eq:request}; quarantine $D_{f,i}$
+\FOR{each target class $c$ in the recorded order}
+\STATE Initialize $N_c\sim\mathcal{N}(0,1)$; freeze $\theta_0$
+\STATE Optimize only $N_c$ using Equation~\ref{eq:noise}; detach optimized inputs
+\ENDFOR
+\FOR{each affected client $i$ with $|D_{f,i}|>0$}
+\STATE Initialize $\theta_i\leftarrow\theta_0$; set $D_{rs,i}\leftarrow\emptyset$
+\FOR{each nonempty retained class $c$}
+\STATE Construct $D_{r,i,c}$; compute $n_{i,c}$ from its size
+\STATE Select $n_{i,c}$ local indices randomly or by request-time confidence
+\STATE Add the selected examples to $D_{rs,i}$ and save their indices
+\ENDFOR
+\FOR{each target class $c$ in the recorded order}
+\STATE Label and repeat $N_c$; impair $\theta_i$ for one epoch on $D_{n,c}\cup D_{rs,i}$
+\ENDFOR
+\STATE Repair $\theta_i$ on the same $D_{rs,i}$ for the configured epochs
+\STATE Upload $\theta_i'$ and its retained sample count
+\ENDFOR
+\STATE Aggregate using Equation~\ref{eq:unlearnagg}; save checkpoint and provenance
+\RETURN $\theta'$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Comparison with Closely Related Methods}
+\label{sec:related}
+\subsubsection{Error-Maximizing Noise and Impair--Repair Updates}
+
+
+Tarun et al.~\cite{ref20} study centralized class unlearning without access to
+the forgotten examples during the update. Their method initializes synthetic
+inputs from a normal distribution, optimizes them against the original model,
+and labels them with the class to be forgotten. One impair epoch on synthetic
+and retained examples is followed by one repair epoch on retained examples;
+additional repair epochs are also investigated. The paper evaluates multiple
+architectures and datasets and discusses the limitations of parameter distance
+for independently trained deep networks. These components precede Fed-EMNU.
+
+The official UNSIR notebook uses a mean squared per-image norm penalty during
+noise optimization, whereas the supplied Fed-EMNU implementation uses an
+unsquared norm over the entire noise tensor. This distinction changes the scale
+of the regularizer and is stated explicitly below. A federated UNSIR-style
+baseline must be labeled as an adaptation: moving its retained examples to
+clients and aggregating local updates changes its original centralized protocol.
+The comparison therefore uses the same pretrained model and accessible local
+retained examples and records these adaptation choices.
+
+\subsubsection{Federated Class Revocation}
+
+Pang et al.~\cite{ref21} address efficient category revocation in federated
+unlearning. We located the public repository \url{https://github.com/lizouss/PAR},
+whose description identifies that paper, and inspected commit
+\texttt{c587e11e56c2be71b99ed716f6045e5d92346c19}.
+We evaluate a \emph{PAR-code-based adaptation}; Appendix~\ref{sec:parprotocol}
+specifies its preprocessing, aggregation and checkpoint-selection choices.
+Verification is limited to the public code, so the comparison is not an exact
+reproduction of published results.
+The code uses a learned generator, all-client impair updates, equal aggregation,
+and ten all-client repair rounds. Fed-EMNU instead uses direct optimization of
+a synthetic input tensor, retained-count-weighted affected-client aggregation,
+and local retained-subset control with its prescribed enhancement budget. These
+are concrete implementation and workflow distinctions; federated coordination
+itself is shared with prior work. Appendix~\ref{sec:parprotocol} specifies adaptations and
+Appendix~\ref{sec:followup} reports the completed comparison.
+
+Other federated unlearning settings include client-level removal in
+FedEraser~\cite{ref22} and differentially private unlearning in
+FedRecovery~\cite{ref23}. A client-removal request and a privacy-protected
+unlearning framework impose different requirements from the global
+class-suppression task evaluated here. Their published guarantees or performance
+are not attributed to the present noise-based adaptation.
+
+The comparison motivates two separate evaluation questions: whether the
+integrated unlearning--enhancement workflow balances target suppression and
+retained utility, and whether confidence ranking improves on random selection
+under matched conditions. Stage-removal ablations address the first question;
+matched subset controls address the second. The original cross-method comparison changes the noise objective and
+update budgets together. The additional controls in
+Section~\ref{sec:round2-controls} compare the objectives at common budgets
+and separately vary event weighting and noise optimization.
+
+\begin{table}[htbp]
+\caption{Closest-method comparison and verification boundary. ``Unverified''
+means that publication metadata alone does not establish the technical detail.
+The evaluated UNSIR-style and PAR rows are adaptations created for this comparison.}
+\label{tab:related}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.16\linewidth}*{3}{>{\raggedright\arraybackslash}X}}
+\toprule
+Method & Update setting and data & Noise and repair & Comparison status\\
+\midrule
+UNSIR~\cite{ref20} & Centralized class request; retained examples available;
+forgotten examples not needed during update & Error-maximizing synthetic inputs;
+target labels; impair then repair & Paper and official notebook checked;
+core mechanism predates Fed-EMNU\\
+UNSIR-style adaptation & Same federated checkpoint, local retained access and
+event aggregation as Fed-EMNU & Squared per-image penalty, 40 noise steps,
+one repair epoch & Matched federated comparator; not an exact centralized
+reproduction\\
+Fed-EMNU revision & Explicit global-class or requester scope; local retained
+selection; retained-count event aggregation & Unsquared whole-tensor penalty,
+80 noise steps, three repair epochs & Incremental coordination/selection
+study; no new noise principle claimed\\
+PAR-code-based adaptation~\cite{ref21} & All-client updates; local retained
+examples; shared checkpoint & Learned generator; equal event aggregation;
+one impair and ten repair rounds & Public code inspected; six matched events;
+paper full text unavailable; exact reproduction not claimed\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\subsection{Privacy, Security and Communication}
+\label{sec:threat}
+The evaluated server and clients execute the prescribed protocol. The server
+may be curious about private data, and an external black-box attacker may query
+released posterior scores. Malicious client updates, server collusion,
+reconstruction from parameters, secure aggregation, and certified deletion are
+not addressed by the update mechanism. In particular, keeping raw examples local
+does not provide differential privacy or prevent membership inference.
+
+The payload for one event includes one global model download, synthetic tensors,
+and one updated model upload per participating client. The implementation records
+the byte count of each tensor payload. It measures local serialization time but
+does not simulate a real network. Network latency and transport framing are
+unmeasured and excluded from compute time; communication savings cannot be
+inferred solely from a faster local update.
+Empty full-training communication records do not imply zero communication:
+the event payload accounting applies to the approximate request, while the
+single-process simulator does not measure real transport for either procedure.
+\section{Evaluation}
+\label{sec:evaluation}\label{sec:results}
+
+We first evaluate target-class unlearning and retained performance, then
+computational cost, stage ablations, selection and seed variation. Additional
+studies assess the limits of the fixed recipe. All numerical results derive
+from saved runs of the protocol specified above; utility, reference distance
+and membership inference are interpreted jointly.
+
+\subsection{Datasets}
+\label{sec:settings}
+
+
+We conduct experiments to evaluate Fed-EMNU on the benchmark dataset CIFAR-10.
+
+CIFAR-10 is a widely used image classification dataset, originally introduced by
+Alex Krizhevsky et al. in 2009 \cite{ref19}. It consists of 60,000
+$32\times32$ color images across 10 classes (airplane, automobile, bird, cat,
+deer, dog, frog, horse, ship, and truck), with 6,000 images per class. The
+dataset is split into 50,000 training images and 10,000 test images, and it is
+commonly used to evaluate supervised learning, convolutional neural networks,
+and other deep learning algorithms.
+
+
+CIFAR-100 is additionally evaluated with 100 output classes. Primary requests
+revoke class 0 globally; two-class and sequential requests are reported
+separately. Inputs are normalized from $[0,255]$ to $[-1,1]$ without augmentation.
+
+\subsection{Baseline}
+\label{sec:baselines}
+\begin{itemize}
+\item \textbf{Retrain:} randomly initialize a new model and train on
+$D_{r,i}$ at every client using the same 50-round schedule and five local epochs.
+The pretrained state is used only for the common before-update evaluation.
+\item \textbf{Finetune:} start affected clients from the common checkpoint,
+perform five full-network epochs on all locally retained examples at learning
+rate 0.001, and aggregate their returned states using the same event rule.
+\item \textbf{GA:} perform five gradient-ascent epochs on affected clients'
+forgotten examples at learning rate 0.001 and aggregate their returned states.
+This baseline requires forgotten examples and therefore has a different access
+requirement from noise-based methods. No undocumented repair pass is added.
+\item \textbf{UNSIR-style federated adaptation:} use the official notebook's
+mean squared per-image noise penalty, five groups of eight noise-optimization
+steps, random within-class retained selection, and one impair/one repair epoch.
+The common checkpoint, accessible clients, batch size, retained ratio, and
+aggregation are held fixed. This is an explicitly documented federated
+adaptation, not a reproduction of the centralized paper's reported numbers.
+\end{itemize}
+At $rt=0.5$, paired selection controls compare confidence ranking with random
+selection at identical per-class counts. Stage controls omit impair or repair. Additional
+architectures, client counts, heterogeneity levels, multi-class and repeated
+requests are reported only when their complete runs are available.
+
+\subsection{Model Configuration and Parameter Settings}
+
+
+We employ a ResNet18 model consisting of 17 convolutional layers and 1 fully
+connected layer for the image classification task. The Adam optimizer is used
+with a learning rate of 0.01. Under the Federated Averaging (FedAvg) framework,
+a total of 10 clients are established, and 40\% of the clients are randomly
+selected to participate in each communication round. The total number of
+communication rounds is set to 50, and the local training batch size is 128.
+During each round, each client performs 5 local epochs of training. In addition,
+experiments are conducted under both IID and Non-IID settings. In this paper,
+the IID scenario is implemented by evenly distributing samples of each class
+across all clients. For the Non-IID scenario, we adopt a Dirichlet
+distribution-based data partitioning strategy, where the concentration parameter
+$\alpha$ is set to 0.5.
+
+
+Pretraining and retraining use sample-count aggregation and the same recorded
+client schedule. Retraining starts from a fresh initialization, with precisely
+the requested records excluded. Incomplete partition allocation is resolved
+deterministically using the recorded split seed.
+The main method uses all retained examples ($rt=1$); matched random/confidence
+controls use $rt=0.5$. At $rt=1$, ranking does not change the selected set;
+the main results therefore do not measure a subset-selection benefit. Scoring
+and ordering can still affect computational cost and optimization order.
+Noise settings and one unlearning/three enhancement epochs are specified in
+Section~\ref{sec:noise} and Section~\ref{sec:updates}.
+
+\subsection{Evaluation Metrics}
+\label{sec:metrics}
+For a fixed held-out test set $T$, define target examples
+$T_f=\{(x,y)\in T:y\in\mathcal{Y}_f\}$ and $T_r=T\setminus T_f$. We report
+overall accuracy, forget accuracy (FA), and retained accuracy (RA):
+\begin{equation}
+\operatorname{Acc}(S)=\frac{1}{|S|}\sum_{(x,y)\in S}
+\mathbf{1}[\arg\max_k p_{\theta'}(k\mid x)=y],\quad
+\mathrm{FA}=\operatorname{Acc}(T_f),\quad\mathrm{RA}=\operatorname{Acc}(T_r).
+\end{equation}
+Low FA is a behavioral consequence of global class suppression. It cannot prove
+that target training records have ceased to influence parameters or predictions.
+For requester-level revocation, other clients' target examples remain legitimate
+training data, and FA should be interpreted against the matching retraining
+reference rather than minimized unconditionally.
+
+We compare outputs with retraining on exactly the same ordered test examples:
+\begin{align}
+\Delta_{\mathrm{pred}}&=\frac1{|T|}\sum_{x\in T}
+\mathbf{1}[\arg\max p_{\theta'}(\cdot\mid x)\ne
+\arg\max p_{\theta^{-f}}(\cdot\mid x)],\\
+\Delta_{\mathrm{TV}}&=\frac1{|T|}\sum_{x\in T}\frac12
+\|p_{\theta'}(\cdot\mid x)-p_{\theta^{-f}}(\cdot\mid x)\|_1.
+\end{align}
+These measures avoid treating raw parameter distance between independently
+initialized, permutation-symmetric deep networks as a deletion certificate.
+
+\subsection{Class-Conditioned Membership Inference}
+\label{sec:mia}
+Membership inference tests whether a training record can be distinguished from
+a nonmember using access to a trained model~\cite{ref24,ref25}. The present
+diagnostic uses a declared scalar loss-based score rather than reproducing a
+shadow-model attack. The attacker observes the released posterior and true class label and uses the
+log true-label posterior as a membership score. Original training examples in
+the request scope are the historical members, including examples later revoked;
+test examples from the same class are non-members. Per class, member and
+non-member counts are balanced. A fixed seed creates disjoint calibration and
+attack-test subsets of both groups, and their exact indices are saved.
+In the full global-class CIFAR-10 setting, each class supplies 500 members and
+500 nonmembers for calibration and the same counts on the disjoint attack test.
+For requester-level requests the available counts can be smaller and are
+recorded per class rather than assumed equal across clients.
+
+For numerical stability, the score is
+$\log\max\{p_\theta(y\mid x),10^{-30}\}$. This floor can create ties when
+target probabilities are extremely small; ties receive average ranks in AUC.
+The attack calibrates score orientation and a decision threshold using only its
+calibration subset, maximizing $\mathrm{TPR}-\mathrm{FPR}$. The held-out attack
+test set yields ROC AUC and signed attack advantage at that frozen threshold.
+We report per-class values and class-macro averages separately for target and
+retained classes. The same split construction is used for the retrained
+reference, and differences from that reference are reported. Calibrating an
+orientation is necessary because a heavily perturbed model may reverse the
+usual loss--membership relation. It is not selected using test attack results.
+
+This is a specified loss-based black-box attack, not an evaluation of every
+possible attacker. Chance-level AUC or low advantage does not establish absence
+of private information, and shared test examples in utility and attack analyses
+do not supply independent replication of a privacy claim.
+
+\subsection{Runtime and Random Seeds}
+\label{sec:runtime}
+The local testbed uses an NVIDIA GeForce RTX 4070 Laptop GPU with 8 GB memory.
+The revision environment uses Python 3.12.14, PyTorch 2.6.0 with CUDA 12.4, and
+torchvision 0.21.0. This differs from the originally declared environment, so
+legacy timing values cannot be directly compared. Each run records software
+versions and the resolved GPU. GPU synchronization occurs before and after the
+method timing boundary. The boundary includes confidence computation, server
+noise optimization, local updates, aggregation, and final state serialization;
+post-hoc utility/MIA evaluation and real network latency are excluded. A complete
+retraining baseline includes all retained-data rounds and checkpoint writes.
+
+Five complete independent seeds (42--46) are reported for the primary
+CIFAR-10/ResNet18 comparison, including matched controls in both partitions.
+ResNet34, stronger heterogeneity, CIFAR-100, PAR, twenty-client, request-sequence
+and continuation studies use seeds 42--44. The PAR tables preserve the original
+three-seed core comparators, rather than mixing them with five-seed means.
+Means, sample SD and descriptive primary five-seed intervals are reported;
+Appendix~\ref{sec:uncertainty} states the interval assumptions. Approximate
+methods share a checkpoint within a seed. These small samples do not establish
+a universal ranking. No hyperparameter was selected on attack-test results.
+Speed-up is computed against each named baseline separately.
+
+\subsection{Reproducibility and Revision Provenance}
+\label{sec:reproducibility}
+The conflicting numerical values in the original submission cannot be traced
+to a confirmed historical cause. We do not attribute them to a specific bug or
+random-seed effect. The revised tables replace those values with outputs from
+the canonical runner; this replacement is a new, documented evaluation rather
+than a forensic reconstruction of the original results. Table~\ref{tab:provenance}
+separates known protocol changes from the unresolved historical discrepancy.
+
+\begin{table}[htbp]\centering\small
+\caption{Revised implementation and result provenance. The changes below do not
+establish the cause of the original inconsistency.}\label{tab:provenance}
+\begin{tabularx}{\linewidth}{p{0.22\linewidth}X}\toprule
+Item & Revised, auditable procedure\\\midrule
+Training and reference & Explicit request sets; independently initialized
+retained-data retraining; recorded partitions and client schedules.\\
+Aggregation & Sample-count weighting replaces the supplied equal-client
+training policy; integer batch-normalization counters use the maximum. The
+new event-weight control changes only request-time aggregation.\\
+Selection and updates & Recorded classwise subset counts and indices;
+declared noise objectives, optimizer resets, impair and repair budgets.\\
+Evaluation & Saved posterior predictions, disjoint class-conditioned attack
+calibration/test indices and a matching reference for each seed.\\
+Environment and timing & Recorded Python/PyTorch/CUDA/GPU versions;
+synchronized timing boundaries; computation and network transport separated.\\
+Historical discrepancy & Cause remains unresolved; original conflicting
+values are excluded from revised quantitative conclusions.\\\bottomrule
+\end{tabularx}\end{table}
+
+For each completed event, the supplementary artifacts include the exact
+configuration, source snapshot and hashes, execution log, sample indices,
+selection indices, predictions and metrics. Suite manifests record commands
+and completion status. Seeds and partial/pilot exclusions are explicit.
+The primary five-seed results and the three-seed second-round controls are
+reported separately. The second-round protocol was fixed before inspecting
+its results and uses the saved original checkpoints and references. Its
+technical timing repeats are not independent scientific seeds. Checkpoint
+weights and CIFAR data are excluded from the lightweight supplement; the
+training runner and original protocol are provided to regenerate them.
+
+\input{revision_results.tex}
+
+\section{Conclusion}
+\label{sec:conclusion}
+Fed-EMNU integrates server-generated target-directed synthetic inputs,
+client-local retained-data control and coordinated unlearning--enhancement
+updates into a federated class-unlearning workflow. The formulation specifies
+request scope, synthetic labels, local budgets and server aggregation.
+The five-seed component-removal experiments explain the design: unlearning
+supplies target suppression, while enhancement recovers retained-task utility.
+Under Non-IID partitions, enhancement raises mean RA from $36.78$\% to
+$72.16$\%; enhancement alone leaves mean FA at $41.00$\%, compared with
+$12.70$\% for the full workflow. These findings support complementary stage
+roles and quantify the associated suppression--utility trade-off.
+
+The reference-based evaluation measures this trade-off together with runtime
+and membership behavior. Fed-EMNU has higher mean retained accuracy than the
+UNSIR-style adaptation in the primary settings, while that comparator is faster
+and yields lower target accuracy. Matched subset controls do not support a
+confidence-ranking advantage. The additional common-budget objective controls
+do not show a consistent advantage of the Fed-EMNU norm penalty. Optimized
+noise lowers target attack AUC relative to Gaussian inputs but has mixed
+accuracy effects across partitions. Non-IID event weighting
+increases retained utility with some increase in residual target accuracy.
+Common-time-cap comparisons likewise show retained-utility gains accompanied
+by higher residual target accuracy and attack AUC. These findings restrict the scientific contribution to a specified adaptation
+and empirical characterization rather than a demonstrated superior mechanism.
+Dataset, architecture, heterogeneity,
+twenty-client, two-request and retained-only continuation studies extend the
+evaluation beyond the primary setting.
+
+\textbf{Limitations and future work.} The method provides approximate class
+suppression: behavioral and membership differences from retraining remain,
+and CIFAR-100 retains substantial target accuracy and attack AUC above its
+reference. The protocol assumes cooperative, available affected clients;
+target-holder-only aggregation gives unaffected clients no separate repair
+update under sparse ownership. Requester-level effectiveness, unavailable
+clients, arbitrary request streams and unrestricted future training remain
+open. The evaluated scope is two CIFAR datasets, one ResNet family and
+ten/twenty simulated clients, with five primary and three extension seeds.
+One loss-based attack does not certify deletion or exhaust privacy threats.
+Stage removal changes compute. Additional within-budget objective and
+event-weight controls address some confounding, but do not isolate every
+interaction or establish superiority at equal wall-clock latency. The PAR comparison is
+limited to the code-based adaptation documented in Appendix~\ref{sec:parprotocol}.
+Future work should examine broader client participation in repair,
+alternative local selection criteria and longer request sequences.
+Resource-constrained edge deployments also require joint measurement of client
+energy, memory, actual uplink/downlink latency and request completion time.
+Salman et al.~\cite{ref26} study a hybrid content delivery network (CDN)
+architecture combining edge caching, multi-access edge computing (MEC)
+offloading and Q-learning-based adaptive routing. That work provides an
+application context for future investigations of where unlearning computations
+should execute under varying resource availability; it does not evaluate
+Fed-EMNU or establish its communication efficiency. Any offloading design must
+also specify the changed data-access and trust assumptions.
+\vspace{10pt}
+\noindent\textbf{Author Contributions:} Conceptualization, Jiale Wang and
+Jianhua Wang; methodology, Jiale Wang; software, Jiale Wang; validation, Jiale
+Wang, Zixiao Liu and Jianhua Wang; formal analysis, Jiale Wang; investigation,
+Jiale Wang; data curation, Jiale Wang; writing--original draft preparation,
+Jiale Wang; writing--review and editing, Jiale Wang, Zixiao Liu and Jianhua
+Wang; visualization, Jiale Wang; supervision, Jianhua Wang; project
+administration, Jianhua Wang; funding acquisition, Jianhua Wang.
+\vspace{6pt}
+\noindent\textbf{Funding:} This research was funded by the Central
+Government-Guided Local Science and Technology Development Fund
+(No. YDZJSX2025D029).
+\vspace{6pt}
+\noindent\textbf{Conflicts of Interest:} The authors declare no conflict of interest.
+\vspace{6pt}
+\noindent\textbf{Data and Code Availability:} CIFAR-10 and CIFAR-100 are publicly available
+from their original dataset page, \url{https://www.cs.toronto.edu/~kriz/cifar.html}.
+The original implementation repository is
+\url{https://github.com/Daoge12/Fed-EMNU}. The revised canonical runner, second-round execution and analysis scripts,
+configurations, dependency versions, completed-run logs, saved predictions and
+numerical summaries are included in the accompanying reproducibility package.
+The repository URL identifies the original implementation and does not imply
+that the second-round code has been uploaded there. CIFAR data and checkpoint
+weights are omitted from the lightweight package; the supplied training commands
+regenerate the required checkpoints. Exact historical original-result
+provenance remains unresolved.
+
+\clearpage
+\appendixstart
+\appendix
+\section{Detailed Primary Diagnostics}
+\label{sec:core-details}
+These tables supplement the five-seed main comparison. Values are mean $\pm$
+sample SD; the identical checkpoints, references and attack splits are used.
+\input{revision_core_details.tex}
+\input{revision_par_protocol.tex}
+\section{Additional Experiments and Uncertainty}
+\label{sec:extensions}
+The following complete evidence is retained, including unfavorable outcomes.
+Extension studies use three seeds; primary uncertainty intervals use five.
+\input{revision_followup.tex}
+\input{revision_second_followup.tex}
+\input{revision_sequence.tex}
+\input{revision_clients20.tex}
+\input{revision_continuation.tex}
+
+\clearpage
+\reftitle{References}
+\externalbibliography{yes}
+\bibliography{references}
+\end{document}

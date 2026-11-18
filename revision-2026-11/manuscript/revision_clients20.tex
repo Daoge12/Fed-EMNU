@@ -1,0 +1,52 @@
+\subsection{Twenty-Client Scale Extension}
+
+\label{sec:clients20}
+
+The twenty-client extension has 36 complete experimental stages, IID and $\alpha=0.5$, seeds 42--44. The same CIFAR-10 dataset and ResNet18 recipe retain 50 rounds, five local epochs and 40\% participation; eight clients participate per round rather than four. Smaller local partitions, minibatch rounding and client schedules change jointly. This is a scale extension, not an isolated causal or equal-time test. Mean $\pm$ sample SD uses $n=3$.
+
+\begin{table}[H]
+\caption{Twenty-client CIFAR-10/ResNet18 iid results, three seeds.}
+\label{tab:clients20-iid}
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & FA (\%) & RA (\%) & Target AUC & TV & Time (s)\\
+\midrule
+Original & $78.53 \pm 0.93$ & $73.11 \pm 0.34$ & $0.650 \pm 0.017$ & --- & $563.52 \pm 130.88$\\
+Retrain & $0.00 \pm 0.00$ & $74.14 \pm 0.16$ & $0.495 \pm 0.034$ & $0.000 \pm 0.000$ & $566.96 \pm 119.95$\\
+Finetune & $77.60 \pm 0.53$ & $73.15 \pm 0.45$ & $0.657 \pm 0.018$ & $0.302 \pm 0.004$ & $25.84 \pm 6.66$\\
+GA & $30.50 \pm 1.05$ & $69.69 \pm 0.62$ & $0.622 \pm 0.013$ & $0.313 \pm 0.007$ & $3.89 \pm 1.17$\\
+Fed-EMNU & $0.90 \pm 0.53$ & $71.41 \pm 0.80$ & $0.582 \pm 0.020$ & $0.299 \pm 0.021$ & $27.23 \pm 7.28$\\
+UNSIR-style & $1.57 \pm 0.93$ & $68.48 \pm 1.15$ & $0.562 \pm 0.017$ & $0.348 \pm 0.008$ & $17.34 \pm 4.63$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+IID paired twenty-minus-ten client Fed-EMNU RA difference is $-3.88 \pm 0.84$ percentage points, FA difference $-6.80 \pm 0.79$ points, and target AUC difference $-0.032 \pm 0.003$. These differences pair seeds 42--44 only; the five-seed primary population is not mixed into this comparison. Twenty-client event payload averages 1737.65 MiB, with $1840.00 \pm 0.00$ local optimizer steps. Native compute and payload changes are reported rather than interpreted as real-network scalability guarantees.
+
+\begin{table}[H]
+\caption{Twenty-client CIFAR-10/ResNet18 noniid results, three seeds.}
+\label{tab:clients20-noniid}
+\centering\scriptsize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Method & FA (\%) & RA (\%) & Target AUC & TV & Time (s)\\
+\midrule
+Original & $71.63 \pm 13.07$ & $68.25 \pm 1.64$ & $0.619 \pm 0.024$ & --- & $732.80 \pm 23.14$\\
+Retrain & $0.00 \pm 0.00$ & $69.19 \pm 0.14$ & $0.506 \pm 0.010$ & $0.000 \pm 0.000$ & $667.32 \pm 29.76$\\
+Finetune & $71.57 \pm 8.98$ & $69.80 \pm 1.48$ & $0.627 \pm 0.026$ & $0.332 \pm 0.026$ & $32.69 \pm 0.65$\\
+GA & $25.27 \pm 6.89$ & $63.66 \pm 2.68$ & $0.603 \pm 0.030$ & $0.353 \pm 0.018$ & $6.50 \pm 0.13$\\
+Fed-EMNU & $1.90 \pm 2.36$ & $66.69 \pm 1.41$ & $0.575 \pm 0.014$ & $0.325 \pm 0.015$ & $36.53 \pm 1.38$\\
+UNSIR-style & $6.37 \pm 7.08$ & $65.32 \pm 1.51$ & $0.566 \pm 0.022$ & $0.357 \pm 0.024$ & $21.91 \pm 0.36$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Non-IID paired twenty-minus-ten client Fed-EMNU RA difference is $-5.46 \pm 0.58$ percentage points, FA difference $-14.83 \pm 11.81$ points, and target AUC difference $-0.023 \pm 0.012$. These differences pair seeds 42--44 only; the five-seed primary population is not mixed into this comparison. Twenty-client event payload averages 1679.73 MiB, with $1782.67 \pm 53.72$ local optimizer steps. Native compute and payload changes are reported rather than interpreted as real-network scalability guarantees.
+
+Two simulated client counts on one GPU do not establish distributed network performance, device heterogeneity or monotonic scalability. All methods share their twenty-client starting checkpoint and reference within seed. The original target-holder-only event and its sparse-ownership limitation are unchanged. No twenty-client PAR result is claimed.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{additional_clients.pdf}
+\caption{Fed-EMNU with ten and twenty clients: mean $\pm$ sample SD across the same three seeds (42--44). The ten-client values use the three-seed core comparator, rather than the five-seed main mean. Partitioning and local batching change with client count; these results do not isolate a client-count-only effect.}
+\label{fig:additional-clients}\end{figure}

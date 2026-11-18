@@ -1,0 +1,54 @@
+\subsection{Common Wall-Clock Caps}
+\label{sec:walltime}
+To supplement matched update counts, we compare time-capped adaptations of the
+two original recipes at 10, 20, 30 and 40 seconds on the same GPU, checkpoints,
+retained-data ordering and references (three seeds, both partitions). The
+noise and maximum repair budgets remain 80 steps/three epochs for Fed-EMNU and
+40 steps/one epoch for UNSIR-style. Method order is counterbalanced by seed
+and budget. No test outcome chooses a configuration or stopping point.
+
+After noise generation, a predefined reserve of the larger of 0.5 seconds and
+15\% of the total cap is withheld for non-training overhead. The remaining
+local-training time is divided equally across all affected clients. Each
+client divides its allocation between impair and repair in ratio
+$1:\text{repair epochs}$. Updates stop at synchronized minibatch boundaries;
+the largest previous minibatch duration is reserved before another batch.
+Original epoch limits also apply: recipes finishing early receive no padding
+or extra training. Total observed time includes noise, local updates, model
+copies, selection, aggregation and final serialization, excluding evaluation
+and network transport. Per-batch synchronization introduces monitoring overhead.
+These controls compare common maximum resources under a specified scheduler;
+they do not establish an optimal allocation or identical consumed time.
+\begin{table}[htbp]\centering\scriptsize\setlength{\tabcolsep}{4pt}
+\caption{Common time caps, IID, three seeds. Times are observed compute/serialization seconds, not padded cap values.}\label{tab:walltime-iid}
+\begin{tabular}{rlrrrrr}\toprule Cap (s) & Recipe & FA (\%) & RA (\%) & Target AUC & TV & Time (s)\\\midrule
+10 & Fed-EMNU & $15.10 \pm 2.80$ & $75.02 \pm 0.15$ & $0.626 \pm 0.025$ & $0.268 \pm 0.002$ & $8.91 \pm 0.10$\\
+10 & UNSIR-style & $8.67 \pm 5.14$ & $73.61 \pm 0.26$ & $0.602 \pm 0.026$ & $0.282 \pm 0.006$ & $8.90 \pm 0.08$\\
+20 & Fed-EMNU & $7.90 \pm 0.85$ & $75.22 \pm 0.08$ & $0.620 \pm 0.022$ & $0.262 \pm 0.001$ & $17.35 \pm 0.06$\\
+20 & UNSIR-style & $4.23 \pm 1.26$ & $74.74 \pm 0.07$ & $0.600 \pm 0.025$ & $0.262 \pm 0.004$ & $14.52 \pm 0.24$\\
+30 & Fed-EMNU & $7.97 \pm 1.66$ & $75.27 \pm 0.19$ & $0.618 \pm 0.019$ & $0.256 \pm 0.004$ & $23.36 \pm 0.70$\\
+30 & UNSIR-style & $4.37 \pm 1.56$ & $74.79 \pm 0.19$ & $0.598 \pm 0.027$ & $0.262 \pm 0.005$ & $14.64 \pm 0.62$\\
+40 & Fed-EMNU & $7.43 \pm 1.50$ & $75.18 \pm 0.21$ & $0.610 \pm 0.022$ & $0.256 \pm 0.002$ & $25.56 \pm 1.16$\\
+40 & UNSIR-style & $4.37 \pm 1.56$ & $74.79 \pm 0.19$ & $0.598 \pm 0.027$ & $0.262 \pm 0.005$ & $14.50 \pm 0.25$\\
+\bottomrule\end{tabular}\end{table}
+\begin{table}[htbp]\centering\scriptsize\setlength{\tabcolsep}{4pt}
+\caption{Common time caps, Non-IID, three seeds. Times are observed compute/serialization seconds, not padded cap values.}\label{tab:walltime-noniid}
+\begin{tabular}{rlrrrrr}\toprule Cap (s) & Recipe & FA (\%) & RA (\%) & Target AUC & TV & Time (s)\\\midrule
+10 & Fed-EMNU & $15.27 \pm 10.10$ & $71.01 \pm 0.98$ & $0.610 \pm 0.013$ & $0.325 \pm 0.011$ & $8.78 \pm 0.04$\\
+10 & UNSIR-style & $5.20 \pm 3.44$ & $66.51 \pm 1.41$ & $0.575 \pm 0.003$ & $0.373 \pm 0.007$ & $8.57 \pm 0.26$\\
+20 & Fed-EMNU & $12.80 \pm 10.62$ & $71.80 \pm 1.30$ & $0.611 \pm 0.022$ & $0.322 \pm 0.016$ & $15.65 \pm 0.43$\\
+20 & UNSIR-style & $4.80 \pm 4.87$ & $69.99 \pm 0.84$ & $0.577 \pm 0.001$ & $0.339 \pm 0.011$ & $13.90 \pm 0.67$\\
+30 & Fed-EMNU & $13.17 \pm 10.26$ & $71.86 \pm 0.89$ & $0.609 \pm 0.020$ & $0.320 \pm 0.015$ & $21.27 \pm 0.93$\\
+30 & UNSIR-style & $4.43 \pm 4.13$ & $70.57 \pm 1.14$ & $0.582 \pm 0.003$ & $0.328 \pm 0.011$ & $15.55 \pm 1.00$\\
+40 & Fed-EMNU & $13.37 \pm 8.98$ & $72.19 \pm 0.75$ & $0.605 \pm 0.020$ & $0.318 \pm 0.011$ & $24.62 \pm 0.90$\\
+40 & UNSIR-style & $4.83 \pm 4.32$ & $70.63 \pm 1.07$ & $0.583 \pm 0.002$ & $0.329 \pm 0.013$ & $15.48 \pm 1.00$\\
+\bottomrule\end{tabular}\end{table}
+All 48 events were checked against their requested caps: 0
+events exceeded the cap. The stage records contain 0 zero-update stages.
+FA/RA are recomputed from saved predictions; paired comparisons use the
+same checkpoints, selections and attack splits. Exact update counts and client
+stage times are provided in the supplementary CSV and traces. The three seeds
+per cell limit inference. Truncation changes stage completion and thus the
+original recipes; these results cannot be substituted for their unrestricted
+defaults or used as proof of general superiority at every time allocation.
+\input{revision_walltime_interpretation.tex}

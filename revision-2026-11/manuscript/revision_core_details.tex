@@ -1,0 +1,72 @@
+\begin{table}[H]\centering\small
+\caption{IID reference distance and class-conditioned attack. AUC and advantage are target-class values.}
+\label{tab:iid-distance}
+\begin{tabular}{lrrrr}\toprule Method & Disagree (\%) & TV & Target AUC & Target advantage\\\midrule
+Retrain & $0.00 \pm 0.00$ & $0.000 \pm 0.000$ & $0.508 \pm 0.026$ & $0.010 \pm 0.036$\\
+Finetune & $31.10 \pm 0.56$ & $0.309 \pm 0.004$ & $0.656 \pm 0.008$ & $0.284 \pm 0.015$\\
+GA & $34.11 \pm 1.41$ & $0.341 \pm 0.013$ & $0.615 \pm 0.002$ & $0.182 \pm 0.028$\\
+Fed-EMNU & $25.58 \pm 0.32$ & $0.254 \pm 0.003$ & $0.620 \pm 0.017$ & $0.177 \pm 0.030$\\
+UNSIR-style & $25.86 \pm 0.48$ & $0.259 \pm 0.005$ & $0.606 \pm 0.023$ & $0.157 \pm 0.044$\\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[H]\centering\small
+\caption{IID retained-class attack and attack differences from Retrain. Differences use identical member/nonmember indices and separately calibrated model-specific thresholds.}
+\label{tab:iid-attack}
+\begin{tabular}{lrrrr}\toprule Method & Retained AUC & Retained adv. & $\Delta$ target AUC & $\Delta$ retained AUC\\\midrule
+Retrain & $0.674 \pm 0.005$ & $0.322 \pm 0.010$ & 0 (self) & 0 (self)\\
+Finetune & $0.680 \pm 0.002$ & $0.337 \pm 0.010$ & $0.147 \pm 0.027$ & $0.006 \pm 0.004$\\
+GA & $0.632 \pm 0.001$ & $0.223 \pm 0.004$ & $0.106 \pm 0.027$ & $-0.042 \pm 0.006$\\
+Fed-EMNU & $0.640 \pm 0.005$ & $0.250 \pm 0.014$ & $0.111 \pm 0.039$ & $-0.034 \pm 0.005$\\
+UNSIR-style & $0.635 \pm 0.007$ & $0.239 \pm 0.018$ & $0.098 \pm 0.039$ & $-0.038 \pm 0.008$\\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[H]\centering\small
+\caption{IID matched selection and stage controls. All values use the same reference and pretrained states as the main comparison.}
+\label{tab:iid-controls}
+\begin{tabular}{lrrrr}\toprule Control & FA (\%) & RA (\%) & TV & Time (s)\\\midrule
+Random (rt=0.5) & $4.96 \pm 1.18$ & $73.53 \pm 0.34$ & $0.272 \pm 0.005$ & $13.03 \pm 3.13$\\
+Confidence (rt=0.5) & $3.72 \pm 1.19$ & $72.03 \pm 0.38$ & $0.281 \pm 0.005$ & $14.18 \pm 3.36$\\
+Impair only & $1.92 \pm 1.29$ & $72.61 \pm 1.51$ & $0.301 \pm 0.023$ & $8.36 \pm 1.87$\\
+Repair only & $41.42 \pm 1.83$ & $75.56 \pm 0.33$ & $0.271 \pm 0.004$ & $14.60 \pm 2.74$\\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[H]\centering\small
+\caption{Non-IID ($\alpha=0.5$) reference distance and class-conditioned attack. AUC and advantage are target-class values.}
+\label{tab:noniid-distance}
+\begin{tabular}{lrrrr}\toprule Method & Disagree (\%) & TV & Target AUC & Target advantage\\\midrule
+Retrain & $0.00 \pm 0.00$ & $0.000 \pm 0.000$ & $0.487 \pm 0.033$ & $-0.021 \pm 0.050$\\
+Finetune & $34.04 \pm 1.21$ & $0.337 \pm 0.011$ & $0.641 \pm 0.017$ & $0.221 \pm 0.027$\\
+GA & $35.57 \pm 1.78$ & $0.354 \pm 0.017$ & $0.617 \pm 0.015$ & $0.178 \pm 0.041$\\
+Fed-EMNU & $31.69 \pm 0.92$ & $0.313 \pm 0.008$ & $0.596 \pm 0.006$ & $0.144 \pm 0.024$\\
+UNSIR-style & $32.35 \pm 1.19$ & $0.325 \pm 0.012$ & $0.578 \pm 0.008$ & $0.115 \pm 0.010$\\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[H]\centering\small
+\caption{Non-IID ($\alpha=0.5$) retained-class attack and attack differences from Retrain. Differences use identical member/nonmember indices and separately calibrated model-specific thresholds.}
+\label{tab:noniid-attack}
+\begin{tabular}{lrrrr}\toprule Method & Retained AUC & Retained adv. & $\Delta$ target AUC & $\Delta$ retained AUC\\\midrule
+Retrain & $0.640 \pm 0.010$ & $0.235 \pm 0.019$ & 0 (self) & 0 (self)\\
+Finetune & $0.655 \pm 0.005$ & $0.261 \pm 0.010$ & $0.154 \pm 0.024$ & $0.015 \pm 0.010$\\
+GA & $0.625 \pm 0.006$ & $0.202 \pm 0.018$ & $0.130 \pm 0.026$ & $-0.014 \pm 0.008$\\
+Fed-EMNU & $0.624 \pm 0.009$ & $0.210 \pm 0.017$ & $0.110 \pm 0.039$ & $-0.016 \pm 0.016$\\
+UNSIR-style & $0.609 \pm 0.012$ & $0.182 \pm 0.020$ & $0.091 \pm 0.033$ & $-0.031 \pm 0.013$\\
+\bottomrule\end{tabular}\end{table}
+
+\begin{table}[H]\centering\small
+\caption{Non-IID ($\alpha=0.5$) matched selection and stage controls. All values use the same reference and pretrained states as the main comparison.}
+\label{tab:noniid-controls}
+\begin{tabular}{lrrrr}\toprule Control & FA (\%) & RA (\%) & TV & Time (s)\\\midrule
+Random (rt=0.5) & $11.68 \pm 8.85$ & $69.00 \pm 2.60$ & $0.341 \pm 0.013$ & $26.05 \pm 32.16$\\
+Confidence (rt=0.5) & $12.40 \pm 8.72$ & $68.16 \pm 2.73$ & $0.346 \pm 0.011$ & $24.09 \pm 25.16$\\
+Impair only & $1.08 \pm 1.32$ & $36.78 \pm 22.04$ & $0.680 \pm 0.169$ & $9.20 \pm 1.00$\\
+Repair only & $41.00 \pm 7.45$ & $72.82 \pm 0.76$ & $0.325 \pm 0.014$ & $13.94 \pm 0.12$\\
+\bottomrule\end{tabular}\end{table}
+\paragraph{Variation among retraining references.}
+
+For IID, pairwise TV among the five retained-data references ranged from 0.247 to 0.259, and prediction disagreement ranged from 24.95\% to 26.19\%. These comparisons share the same retained global records and test set but vary initialization, client partition and schedule together. The ten pairs are dependent and are reported only as descriptive context, not as additional independent runs or a certified tolerance for unlearning.
+For Non-IID, pairwise TV among the five retained-data references ranged from 0.317 to 0.349, and prediction disagreement ranged from 32.34\% to 35.40\%. These comparisons share the same retained global records and test set but vary initialization, client partition and schedule together. The ten pairs are dependent and are reported only as descriptive context, not as additional independent runs or a certified tolerance for unlearning.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{additional_privacy.pdf}
+\caption{Target-class loss-based membership-inference AUC for the five primary methods, mean $\pm$ sample SD across five seeds. The dashed 0.5 line denotes chance reference for this attack, not a privacy or deletion threshold. AUC is interpreted against retained-data retraining.}
+\label{fig:additional-privacy}\end{figure}
