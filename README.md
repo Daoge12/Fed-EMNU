@@ -1,9 +1,5 @@
 # Fed-EMNU
 
-- [Original implementation](Fed-EMNU-main/)
-- [November 2026 revision: source, protocols and numerical summaries](revision-2026-11/)
+[Original implementation](Fed-EMNU-main/) · [Revision source and reproduction guide](revision-2026-11/README.md)
 
-The revision distinguishes approximate class suppression from verified data
-deletion and retains unfavorable comparisons. Final manuscript source and reviewer replies are included in the revision folder.
-Compiled submission documents and the full evidence archive are packaged separately. See the revision README for evidence coverage and
-the separate full reproducibility supplement.
+The revision studies a federated adaptation and empirical characterization for approximate class suppression. See the revision guide for public files, executable commands and evidence exclusions.

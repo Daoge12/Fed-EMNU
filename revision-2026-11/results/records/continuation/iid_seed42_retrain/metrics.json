@@ -1,0 +1,141 @@
+{
+  "before": {
+    "test_acc": 0.6642,
+    "forget_acc": 0.0,
+    "retain_acc": 0.738,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "after": {
+    "test_acc": 0.6728,
+    "forget_acc": 0.0,
+    "retain_acc": 0.7475555555555555,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "method_seconds": 57.227093100002094,
+  "optimizer_steps": 3600,
+  "communication": {},
+  "pilot": false,
+  "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\continuation\\iid_seed42_retrain\\20261112T080818.469736Z_retrain_seed42",
+  "membership": {
+    "attack": "class-conditioned calibrated negative cross entropy",
+    "access": "black-box posterior and true class label",
+    "per_class": {
+      "0": {
+        "auc": 0.503276,
+        "advantage": 0.020000000000000018,
+        "tpr": 0.858,
+        "fpr": 0.838,
+        "calibrated_sign": -1,
+        "calibrated_threshold": 21.1982421875,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "1": {
+        "auc": 0.620758,
+        "advantage": 0.236,
+        "tpr": 0.894,
+        "fpr": 0.658,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0032902187667787075,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "2": {
+        "auc": 0.756244,
+        "advantage": 0.438,
+        "tpr": 0.852,
+        "fpr": 0.414,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.02200906164944172,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "3": {
+        "auc": 0.823612,
+        "advantage": 0.562,
+        "tpr": 0.872,
+        "fpr": 0.31,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.02765052393078804,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "4": {
+        "auc": 0.72279,
+        "advantage": 0.34800000000000003,
+        "tpr": 0.804,
+        "fpr": 0.456,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0014228209620341659,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "5": {
+        "auc": 0.739246,
+        "advantage": 0.406,
+        "tpr": 0.884,
+        "fpr": 0.478,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0241753738373518,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "6": {
+        "auc": 0.608662,
+        "advantage": 0.244,
+        "tpr": 0.894,
+        "fpr": 0.65,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.008764957077801228,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "7": {
+        "auc": 0.620256,
+        "advantage": 0.2879999999999999,
+        "tpr": 0.944,
+        "fpr": 0.656,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.013748851604759693,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "8": {
+        "auc": 0.555642,
+        "advantage": 0.14,
+        "tpr": 0.902,
+        "fpr": 0.762,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.000987301697023213,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "9": {
+        "auc": 0.65706,
+        "advantage": 0.278,
+        "tpr": 0.866,
+        "fpr": 0.588,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.002580273197963834,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      }
+    },
+    "groups": {
+      "target": {
+        "macro_auc": 0.503276,
+        "macro_advantage": 0.020000000000000018,
+        "class_count": 1
+      },
+      "retained": {
+        "macro_auc": 0.6782522222222221,
+        "macro_advantage": 0.32666666666666666,
+        "class_count": 9
+      }
+    }
+  }
+}

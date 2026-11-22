@@ -1,0 +1,141 @@
+{
+  "before": {
+    "test_acc": 0.1004,
+    "forget_acc": 0.0,
+    "retain_acc": 0.11155555555555556,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "after": {
+    "test_acc": 0.7455,
+    "forget_acc": 0.792,
+    "retain_acc": 0.7403333333333333,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "method_seconds": 591.5823832999449,
+  "optimizer_steps": 40000,
+  "communication": {},
+  "pilot": false,
+  "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\core-extra-seeds\\iid_seed46_pretrain\\20261110T124534.515965Z_pretrain_seed46",
+  "membership": {
+    "attack": "class-conditioned calibrated negative cross entropy",
+    "access": "black-box posterior and true class label",
+    "per_class": {
+      "0": {
+        "auc": 0.649452,
+        "advantage": 0.256,
+        "tpr": 0.87,
+        "fpr": 0.614,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0095417695119977,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "1": {
+        "auc": 0.59923,
+        "advantage": 0.19399999999999995,
+        "tpr": 0.818,
+        "fpr": 0.624,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.003536270698532462,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "2": {
+        "auc": 0.752584,
+        "advantage": 0.436,
+        "tpr": 0.868,
+        "fpr": 0.432,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.014014899730682373,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "3": {
+        "auc": 0.806046,
+        "advantage": 0.538,
+        "tpr": 0.902,
+        "fpr": 0.364,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.08433857560157776,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "4": {
+        "auc": 0.71343,
+        "advantage": 0.376,
+        "tpr": 0.846,
+        "fpr": 0.47,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.007166493218392134,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "5": {
+        "auc": 0.716382,
+        "advantage": 0.40800000000000003,
+        "tpr": 0.882,
+        "fpr": 0.474,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.03000960312783718,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "6": {
+        "auc": 0.604686,
+        "advantage": 0.22999999999999998,
+        "tpr": 0.946,
+        "fpr": 0.716,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.020730631425976753,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "7": {
+        "auc": 0.614164,
+        "advantage": 0.244,
+        "tpr": 0.872,
+        "fpr": 0.628,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0033041525166481733,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "8": {
+        "auc": 0.55945,
+        "advantage": 0.16599999999999993,
+        "tpr": 0.956,
+        "fpr": 0.79,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.027704939246177673,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "9": {
+        "auc": 0.625762,
+        "advantage": 0.244,
+        "tpr": 0.792,
+        "fpr": 0.548,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.004270719364285469,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      }
+    },
+    "groups": {
+      "target": {
+        "macro_auc": 0.649452,
+        "macro_advantage": 0.256,
+        "class_count": 1
+      },
+      "retained": {
+        "macro_auc": 0.6657482222222222,
+        "macro_advantage": 0.3151111111111111,
+        "class_count": 9
+      }
+    }
+  }
+}

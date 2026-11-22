@@ -1,0 +1,2210 @@
+{
+  "extension-resnet34": {
+    "suite_sha256": "566ebdea27b3e855b6520049d1d3f012436ee09a1dfce6156b104631948779e9",
+    "summary": {
+      "iid/pretrain": {
+        "fa": {
+          "n": 3,
+          "mean": 0.7716666666666666,
+          "sd": 0.01929594085120842
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.729962962962963,
+          "sd": 0.0028335148816199898
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.7341333333333333,
+          "sd": 0.0009073771725877731
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 1185.1267527333305,
+          "sd": 159.23319354202144
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 40000.0,
+          "sd": 0.0
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.642938,
+          "sd": 0.010257552924552672
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.266,
+          "sd": 0.01907878402833893
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6654425925925928,
+          "sd": 0.008894959294789801
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.30896296296296294,
+          "sd": 0.017971628303198175
+        }
+      },
+      "iid/retrain": {
+        "fa": {
+          "n": 3,
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.7447777777777778,
+          "sd": 0.0005555555555555314
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.6703,
+          "sd": 0.0005000000000000004
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 1073.8728196666343,
+          "sd": 146.93230031248427
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 36000.0,
+          "sd": 0.0
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.5106573333333334,
+          "sd": 0.015693327669214528
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.007333333333333303,
+          "sd": 0.01942506971244459
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6677588148148148,
+          "sd": 0.002046782845457927
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.3034074074074074,
+          "sd": 0.00279623497602617
+        }
+      },
+      "iid/ft": {
+        "fa": {
+          "n": 3,
+          "mean": 0.7313333333333333,
+          "sd": 0.0037859388972001857
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.7312222222222222,
+          "sd": 0.002501851166488423
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.7312333333333333,
+          "sd": 0.0025006665778014524
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 57.83514666665966,
+          "sd": 1.1464853041703313
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 1800.0,
+          "sd": 0.0
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.31273333333333336,
+          "sd": 0.005739628327107385
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.3122478723526001,
+          "sd": 0.004777121312599348
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.6507273333333333,
+          "sd": 0.01784447996813954
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.14007,
+          "sd": 0.007759420854677219
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.2826666666666667,
+          "sd": 0.01792577287966499
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.2753333333333334,
+          "sd": 0.029687258770949784
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6745206666666665,
+          "sd": 0.009044232132370206
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": 0.0067618518518517785,
+          "sd": 0.010246734189356389
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.327037037037037,
+          "sd": 0.013154979967388264
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.02362962962962963,
+          "sd": 0.011087382069373465
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 1704551840.0,
+          "sd": 0.0
+        }
+      },
+      "iid/ga": {
+        "fa": {
+          "n": 3,
+          "mean": 0.14200000000000002,
+          "sd": 0.014933184523068075
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.6769999999999999,
+          "sd": 0.006725664866854048
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.6234999999999999,
+          "sd": 0.0045639894828976325
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 7.791626500004592,
+          "sd": 0.13736241455379822
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 200.0,
+          "sd": 0.0
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.34013333333333334,
+          "sd": 0.00648254065419829
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.34108519554138184,
+          "sd": 0.006154525236015043
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.6033106666666667,
+          "sd": 0.011453532089854794
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.09265333333333331,
+          "sd": 0.02455266415958429
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.17466666666666666,
+          "sd": 0.009865765724632542
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.16733333333333336,
+          "sd": 0.02872861523522033
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6274192592592592,
+          "sd": 0.006112452355171236
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.04033955555555561,
+          "sd": 0.006617647364583208
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.218,
+          "sd": 0.013478835719218495
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.08540740740740742,
+          "sd": 0.010685939378993523
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 1704551840.0,
+          "sd": 0.0
+        }
+      },
+      "iid/noise": {
+        "fa": {
+          "n": 3,
+          "mean": 0.05399999999999999,
+          "sd": 0.00818535277187245
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.7467037037037038,
+          "sd": 0.006102350623126506
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.6774333333333332,
+          "sd": 0.005120872321522308
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 54.505334999994375,
+          "sd": 0.3793917998497745
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 1640.0,
+          "sd": 0.0
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.26066666666666666,
+          "sd": 0.0015631165450257776
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.2609187662601471,
+          "sd": 0.0019429565520457592
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.6002146666666667,
+          "sd": 0.018285246657711047
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.08955733333333328,
+          "sd": 0.023149396651604832
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.14799999999999996,
+          "sd": 0.03104834939252002
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.14066666666666666,
+          "sd": 0.04687572221665849
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6312780740740741,
+          "sd": 0.004868234538581014
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.0364807407407407,
+          "sd": 0.006332246075614802
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.2275555555555556,
+          "sd": 0.005811865258054206
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.07585185185185182,
+          "sd": 0.006449550978085989
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 1720280480.0,
+          "sd": 0.0
+        }
+      },
+      "iid/unsir": {
+        "fa": {
+          "n": 3,
+          "mean": 0.02266666666666667,
+          "sd": 0.004163331998932266
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.7405925925925926,
+          "sd": 0.00651336075407748
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.6688000000000001,
+          "sd": 0.006000833275470987
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 31.015545633349877,
+          "sd": 0.31432018300683917
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 920.0,
+          "sd": 0.0
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.26363333333333333,
+          "sd": 0.009348974988378852
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.2623596290747325,
+          "sd": 0.007421477449104412
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.5917226666666666,
+          "sd": 0.014901767590904554
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.08106533333333331,
+          "sd": 0.01963156533069469
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.13666666666666666,
+          "sd": 0.03330665599145812
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.12933333333333336,
+          "sd": 0.050846173241782235
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6240579259259259,
+          "sd": 0.004258789524500076
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.0437008888888889,
+          "sd": 0.005847819553548476
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.2137037037037037,
+          "sd": 0.010604758618176766
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.08970370370370369,
+          "sd": 0.010937156814133901
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 1720280480.0,
+          "sd": 0.0
+        }
+      },
+      "noniid/pretrain": {
+        "fa": {
+          "n": 3,
+          "mean": 0.6963333333333334,
+          "sd": 0.10585052353830537
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.6893333333333334,
+          "sd": 0.0071724782637833245
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.6900333333333334,
+          "sd": 0.010686595965663402
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 911.0954012333337,
+          "sd": 149.8829494865446
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 39023.333333333336,
+          "sd": 576.6353556046779
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.6252973333333333,
+          "sd": 0.005480597169408954
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.21,
+          "sd": 0.019078784028338902
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6343471111111111,
+          "sd": 0.005898798375228977
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.2282962962962963,
+          "sd": 0.01283193033857308
+        }
+      },
+      "noniid/retrain": {
+        "fa": {
+          "n": 3,
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.692037037037037,
+          "sd": 0.006369616665145989
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.6228333333333332,
+          "sd": 0.0057326549986313965
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 762.5762205000113,
+          "sd": 10.360056479449346
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 35728.333333333336,
+          "sd": 357.43297740042584
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.504792,
+          "sd": 0.02558832827677497
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": -0.002000000000000011,
+          "sd": 0.014000000000000002
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6329800740740742,
+          "sd": 0.00684976775071124
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.22429629629629633,
+          "sd": 0.011893214858514202
+        }
+      },
+      "noniid/ft": {
+        "fa": {
+          "n": 3,
+          "mean": 0.6896666666666667,
+          "sd": 0.07600877142365435
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.712037037037037,
+          "sd": 0.006611188919554599
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.7098,
+          "sd": 0.009959417653658285
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 37.90303133331084,
+          "sd": 0.6294495917585541
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 1785.0,
+          "sd": 0.0
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.3477666666666666,
+          "sd": 0.004050102879351752
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.3436697721481323,
+          "sd": 0.0031166367216911017
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.6411046666666667,
+          "sd": 0.006209541475288935
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.13631266666666667,
+          "sd": 0.031068208144875934
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.21999999999999997,
+          "sd": 0.008717797887081373
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.222,
+          "sd": 0.021071307505705513
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6442905185185186,
+          "sd": 0.0048159833186072155
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": 0.0113104444444444,
+          "sd": 0.007666477688492154
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.24770370370370368,
+          "sd": 0.008900917786866675
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.023407407407407366,
+          "sd": 0.003592401674957706
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 1704551840.0,
+          "sd": 0.0
+        }
+      },
+      "noniid/ga": {
+        "fa": {
+          "n": 3,
+          "mean": 0.149,
+          "sd": 0.0525642464038057
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.635962962962963,
+          "sd": 0.01838186617607762
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.5872666666666667,
+          "sd": 0.011721916794335862
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 5.668447233309659,
+          "sd": 0.22238359503889968
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 221.66666666666666,
+          "sd": 2.886751345948129
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.36813333333333337,
+          "sd": 0.01298550473925959
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.36632465322812396,
+          "sd": 0.015421363639143518
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.604746,
+          "sd": 0.0047929460668778776
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.09995399999999999,
+          "sd": 0.023035907535845
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.14933333333333335,
+          "sd": 0.021571586249817903
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.15133333333333335,
+          "sd": 0.03557152419187759
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6109808888888888,
+          "sd": 0.0027216322172413003
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.02199918518518525,
+          "sd": 0.004321743740058291
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.17518518518518522,
+          "sd": 0.003000685792670994
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.049111111111111105,
+          "sd": 0.013531855420122994
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 1704551840.0,
+          "sd": 0.0
+        }
+      },
+      "noniid/noise": {
+        "fa": {
+          "n": 3,
+          "mean": 0.08666666666666667,
+          "sd": 0.013576941236277538
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.723925925925926,
+          "sd": 0.013720910118705557
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.6602,
+          "sd": 0.011499999999999955
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 37.29244216667333,
+          "sd": 0.501986573451278
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 1628.0,
+          "sd": 0.0
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.3136666666666667,
+          "sd": 0.018843124298622376
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.30987321337064105,
+          "sd": 0.016523240759588605
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.6091213333333333,
+          "sd": 0.016583186826823477
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.10432933333333332,
+          "sd": 0.042057947136460806
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.1426666666666667,
+          "sd": 0.029687258770949784
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.1446666666666667,
+          "sd": 0.03700450423034113
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.6170721481481481,
+          "sd": 0.0040365393216804804
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.01590792592592601,
+          "sd": 0.003224434162885409
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.19392592592592592,
+          "sd": 0.011728057175119896
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.030370370370370398,
+          "sd": 0.0047157908273768945
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 1720280480.0,
+          "sd": 0.0
+        }
+      },
+      "noniid/unsir": {
+        "fa": {
+          "n": 3,
+          "mean": 0.10099999999999999,
+          "sd": 0.07014983962918234
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.7093703703703703,
+          "sd": 0.010262200407400274
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.6485333333333334,
+          "sd": 0.011595401387331662
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 19.95507846667897,
+          "sd": 0.6244670409382257
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 914.0,
+          "sd": 0.0
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.3309666666666667,
+          "sd": 0.020250514396758734
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.3332500259081523,
+          "sd": 0.015917135486494583
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.5950546666666666,
+          "sd": 0.021095840853906107
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.09026266666666664,
+          "sd": 0.046564890865686964
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.14133333333333334,
+          "sd": 0.06306610288683871
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.14333333333333334,
+          "sd": 0.07642861593234124
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.61282,
+          "sd": 0.009605593596737108
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.020160074074074125,
+          "sd": 0.00415235328983698
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.18044444444444444,
+          "sd": 0.021160176899538266
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.043851851851851864,
+          "sd": 0.010910032382369978
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 1720280480.0,
+          "sd": 0.0
+        }
+      }
+    },
+    "paired_selection": {},
+    "evidence": [
+      {
+        "key": "iid_seed42_pretrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed42_pretrain\\20261110T065101.808176Z_pretrain_seed42",
+        "config_sha256": "ce4968aa50e36ce66325ec27c8d08463bd2675ff1c883b405cf0c6a9f404ab6c",
+        "metrics_sha256": "ce50b30dc7d5c10ad70efe5fe48d2402d66aff1a6692d89f7314f67dc4c991ff",
+        "predictions_sha256": "a53ebcb8192747abd2d116c8371dfe12a43cf293a5bab07fab6ee184470edcda",
+        "checkpoint_sha256": "edd03557b516139f412e35c2285f7b8c58c58ec0a989a5f875ebe9d8291b3eb0"
+      },
+      {
+        "key": "iid_seed42_retrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed42_retrain\\20261110T070752.880881Z_retrain_seed42",
+        "config_sha256": "d49aae8dad6f09531fa830a169f5566d09b298e9c7e9c66157aa55414af109fb",
+        "metrics_sha256": "f4e6c497d5e3db3498d14815946983daea6b63cc2808b674680df021d47305fb",
+        "predictions_sha256": "1fbd5a966841a5d3368c6e5b47f8f1371037e91c414d7373f87274beed0dd119",
+        "checkpoint_sha256": "4199856baadc3e67b8009523842e98f00366a0ff89c19f3b367c56cc6f229acb"
+      },
+      {
+        "key": "iid_seed42_ft",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed42_ft\\20261110T072308.091234Z_ft_seed42",
+        "config_sha256": "2bdb17656641527c783e323bd43d5dfebf6d8c3f8faeecfe2313da0b4465044b",
+        "metrics_sha256": "5c7964c4bfadd2a6090452e262badb47e5368efe58eac445e67b5a74c9d93cae",
+        "predictions_sha256": "eccdc22473f56cf4450c5fc3e9795dd61bf9edad77d2dc862a0fea98cdca5515",
+        "checkpoint_sha256": "6803ab10f9d882a40f809e40c05c9ded4c80cd06081bdd4ba27eb294f0c26bf5"
+      },
+      {
+        "key": "iid_seed42_ga",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed42_ga\\20261110T072423.903372Z_ga_seed42",
+        "config_sha256": "130e22860f8b361b1089928294184e6ebd1dd4f7960896c2cd6f654c6441843b",
+        "metrics_sha256": "10337085243ada6598b9beb8883488eda14fa83da0d9ed19ded6e6850ffe1ac3",
+        "predictions_sha256": "5fefcf16d08746e7e7e27f7000f63bb358ef1a9069ba829c5a3072388051fd68",
+        "checkpoint_sha256": "173ecd58f8e122566483abd35b0f6581a1b84aee55d246acea3235600fe58230"
+      },
+      {
+        "key": "iid_seed42_noise",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed42_noise\\20261110T072448.506964Z_noise_seed42",
+        "config_sha256": "21a8e6a2b9f6e4340a431379b2b159c2661b0ef9024c5909f5a14a19496ab97a",
+        "metrics_sha256": "bcd3ec2ae99a9e840a5b78df9075bf51c962071633d6939ac73baed879784cc7",
+        "predictions_sha256": "ef6361a519d1e91fabb39de34cdd6ca4950a8220350b76dfe5b7dd9733d9bb7e",
+        "checkpoint_sha256": "7b2d5ca19e2162916525e259db4fd503f9e1bbd6fac0515c5491ee4864f2ede8"
+      },
+      {
+        "key": "iid_seed42_unsir",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed42_unsir\\20261110T072558.804224Z_unsir_seed42",
+        "config_sha256": "53be1e539e0a484f1ee595517d1ba2e26f53317f5292c82b81ebf360986e2e8d",
+        "metrics_sha256": "c3edb78eac4692c39b8140fb9db865de65f73f62415648480a1010684edc95f1",
+        "predictions_sha256": "a64ec6fd9c4e574d51ab85c7ec8cc6e16a240fe0a799aaf5424150e8c510afd6",
+        "checkpoint_sha256": "f9cba21eccecf2d568c3826d5e0b953ae87e6f27cdf704d39f0c0f967e5f524c"
+      },
+      {
+        "key": "iid_seed43_pretrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed43_pretrain\\20261110T072645.844798Z_pretrain_seed43",
+        "config_sha256": "8237831bab03be972c20e4667a0115020d31aa9ee147466ec61ca3a014bbb3ef",
+        "metrics_sha256": "256994b06e6cbf1e9ae3ad559c404ce821663b6ca4f98e5c21137b1fef111ca0",
+        "predictions_sha256": "4ab9453cc7718d825938dc5721a2cc6769dd54955d6d7c2fea82b55ea3a32c8a",
+        "checkpoint_sha256": "247e8d005de6beb34a6e5f166b22261dbae2e4ab2c47746f99a4e9ee5df691ff"
+      },
+      {
+        "key": "iid_seed43_retrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed43_retrain\\20261110T074817.457218Z_retrain_seed43",
+        "config_sha256": "75f17b7c942ddea91c5b7425fda9c430a6947c7dc29cf66a208fa6271bfeff98",
+        "metrics_sha256": "cfe04822b6ff5cb92b275ab046f327c94c3ea225ab2bf379a6ef215f2aeafe1a",
+        "predictions_sha256": "02c7fbbf4b54f788a95bdd36b15ce17766b42e0f28ee17a93a3ec212d940405c",
+        "checkpoint_sha256": "1469e61860f84a3a37ab0019bebc3daf9aba75826b3af577f450c47940f0dff5"
+      },
+      {
+        "key": "iid_seed43_ft",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed43_ft\\20261110T080757.709475Z_ft_seed43",
+        "config_sha256": "075eed9670619f5ea69c81c2c6abce3ad8ef191d9a2cc8a36a0bb37af981e92e",
+        "metrics_sha256": "96cc479bd02dec805e999e2f9d248c97d24cc651edda158a7b7a73628ea3ca0f",
+        "predictions_sha256": "caf4e2863e954df5b96e2b3a757b1aa09e96fc41762828cf68adf59bbf8405e7",
+        "checkpoint_sha256": "5e7998d603be7c9f52bea0f37b67e83c73878ae78ea4cc9364d11bdacdcd2d1d"
+      },
+      {
+        "key": "iid_seed43_ga",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed43_ga\\20261110T080910.930032Z_ga_seed43",
+        "config_sha256": "dd62a9b9fe0f09675cceecece6a9313af9e4ee47b8091157532090b8be379afb",
+        "metrics_sha256": "90edd8e02c6b2f42330e9af4a23bef427a1658a6c2db77f79d3b6b40ab1d13c0",
+        "predictions_sha256": "3d719d103b7d164f33d95e2778313d46f8593449a8d62b09b191713a087092f4",
+        "checkpoint_sha256": "81cdd8ca3cd3978a3d8fe69a4d1ea958fa5de835c71deb7d26b6c337e68983e7"
+      },
+      {
+        "key": "iid_seed43_noise",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed43_noise\\20261110T080935.462881Z_noise_seed43",
+        "config_sha256": "b4be1c548fa8c33a264597d54a8c1a7568b26e8b27a04b1f2db141199ff897aa",
+        "metrics_sha256": "afc075ce06c4b315a19b3e4bc6116965119b67080dbd1bcfbf36b76a5035f66e",
+        "predictions_sha256": "b541873eda6555ffab5d93ddd82a5e9d9a1c72c1ec4336928348e3ce71c9b1c5",
+        "checkpoint_sha256": "1ca06203cf594733165bba9a27b84aa7d90ab42592f8bdff6c93d7edf235c898"
+      },
+      {
+        "key": "iid_seed43_unsir",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed43_unsir\\20261110T081046.614021Z_unsir_seed43",
+        "config_sha256": "5d5831b16dfd1cb1ed07ec0c6f91196c20aaeb8acba1c7ce281201be128b5b33",
+        "metrics_sha256": "a5debd11d5f3227fad6f0cc35c9da4e55b390bd1842dd11fa84baad01bc6451b",
+        "predictions_sha256": "74cf72056bc107914c3b8e4d0b890b15ba5e6035758735596b75e08ebfe19813",
+        "checkpoint_sha256": "e419dcf8bf5cc1aa54c3db818ed414aa11ed972960def39f2528405ff7e2627d"
+      },
+      {
+        "key": "iid_seed44_pretrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed44_pretrain\\20261110T081134.211099Z_pretrain_seed44",
+        "config_sha256": "837dac1843fad7795f8e202b8ffaa39bb154cdacdd0e9b59beab90ab31ff735a",
+        "metrics_sha256": "a7a77609d4b7e20fe4ebe29428a0fcd691fa04558fb012ccf726736582f3fbcb",
+        "predictions_sha256": "21af55dd1bca7ca6025f49d2f08b1eb7fde2950a3173f7e19a51985063fe6b08",
+        "checkpoint_sha256": "99b44a7482b8c45a44807cec05c5773c04df1e2686dae5d51558a2d0a5ce6fdf"
+      },
+      {
+        "key": "iid_seed44_retrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed44_retrain\\20261110T083258.863468Z_retrain_seed44",
+        "config_sha256": "5d305c187c413ab64f59e5fc00a14effef8e010fe336784605c16d7ba18ba29b",
+        "metrics_sha256": "bea9fa636717cece5f42bc807a348b26a93e22c9c977c36958e828f6fe1c675a",
+        "predictions_sha256": "aecff6402ba6e0d0718e42f9a3e79dfc6f573861386fe39c3a67932d9f7e1af6",
+        "checkpoint_sha256": "06219453a632f20aa1cdafaa7ed7e0faa20db4da2f9a56762233169cc657c958"
+      },
+      {
+        "key": "iid_seed44_ft",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed44_ft\\20261110T085217.990406Z_ft_seed44",
+        "config_sha256": "9b802ce655c6d275d13b02eba68fc86befb6474767697706f7270e95bf6a2e79",
+        "metrics_sha256": "b3d3b57ba2fad24afb4c8b2c14010a87da2d887a888d339b8bfe881fb099ef5c",
+        "predictions_sha256": "e9e74f2b65d7c67be4ef6643a06ebc6d4f5fae4b011b6b20c05465335efece33",
+        "checkpoint_sha256": "0df68ccc5149821ee32b8e26c8ff949e2f5a9252c7d922e9f56393a8737e95a1"
+      },
+      {
+        "key": "iid_seed44_ga",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed44_ga\\20261110T085331.863371Z_ga_seed44",
+        "config_sha256": "452a551328f9de043866423395a8fd4c7243098ada2291c8f36d04e72180c453",
+        "metrics_sha256": "d03172e54a37f6a56a78704f5ad7df0fb527819e7b011cd7d0b2eee38062b35a",
+        "predictions_sha256": "506920ac141102e5787286f2c2a8a5796335416e4bbae6790a7c7a74bf8320f6",
+        "checkpoint_sha256": "5fe54de25b4b1aa5b5ab1e9d55422c21f23e6da27a161950f4adb55f9b92c89a"
+      },
+      {
+        "key": "iid_seed44_noise",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed44_noise\\20261110T085355.873905Z_noise_seed44",
+        "config_sha256": "806d72ab9f6aebb9f8f71239ea4de65a7f0051ffa60e3cae61709690f024e55b",
+        "metrics_sha256": "1d50759e2e52ff406c66639598f6552338aed88001fe2c686cbc1827463469f4",
+        "predictions_sha256": "b476f3788d595ab0b63f8855331c1b09755bff18f99695bf207ca9ebf4b7256b",
+        "checkpoint_sha256": "f4d4818906b3dfe63fdbb2005abe214512b5449ac387ca930c6f14d31dcf7e0d"
+      },
+      {
+        "key": "iid_seed44_unsir",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\iid_seed44_unsir\\20261110T085507.237623Z_unsir_seed44",
+        "config_sha256": "00de512ec0719d0c870be035c36989a2267cccc87cc6bf2553f96e443d8a1e34",
+        "metrics_sha256": "22233b4f26f57aa496da80fc9e864dc4e7835ffd1802c1625a3e00ed850e48ea",
+        "predictions_sha256": "3bc79e2001251abd23ae6f1cdfcb7d762e9ae00e14781c0bf0690c368dc63542",
+        "checkpoint_sha256": "77adabdc5be58a600a76130082b201fd05a1e29e665bc3898069406f1ae1162c"
+      },
+      {
+        "key": "noniid_seed42_pretrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed42_pretrain\\20261110T085553.972102Z_pretrain_seed42",
+        "config_sha256": "d4bb831ff4f919ef05e746b10adc648456b4d059f13562c7a080eb78266d8afd",
+        "metrics_sha256": "d80abe0fc909f52e9e54345dff3f244bd9987c0e78c9ebda3a27729caa566103",
+        "predictions_sha256": "e474c7ad6668d5228cf77df14e58adc93688bedbdbc1e34e042c05ff5a614ad0",
+        "checkpoint_sha256": "33a131adf7972a9e3757f9699bd2f8b72304ee1e0f4f3c564fe5a02eda12cfb2"
+      },
+      {
+        "key": "noniid_seed42_retrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed42_retrain\\20261110T091407.449371Z_retrain_seed42",
+        "config_sha256": "c9941da4ae307efeb29eb6bc24f79c083cd6de7696fee2899985775515a1d09b",
+        "metrics_sha256": "6310532ec5d258acf13b18ef0d9865a153dc6d1091b761e25eec7889eb4faad9",
+        "predictions_sha256": "e0cb8f9df3b7cbfd714573c2cb86076b99ae57a91e044457b5fed0dc056f98ba",
+        "checkpoint_sha256": "b6ebe7aea16843aeb348e9add5b68aef5403a92a775e12b63d064e9bbc5797c1"
+      },
+      {
+        "key": "noniid_seed42_ft",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed42_ft\\20261110T092707.656587Z_ft_seed42",
+        "config_sha256": "1e0f54e06beaa15d1a9a4c586e9a44a6b461fc75a28bfd683141ba79377c32c0",
+        "metrics_sha256": "768863c5701193ad582937174b369f00fcd4115d0600870e695379a3121bb3ef",
+        "predictions_sha256": "7f65443a5863d6734452f8a640435c2e5bbfa2e2f703789de8afb27b6121a051",
+        "checkpoint_sha256": "cb35ec2ecc56d423e422a588d8f970237e61c3e06b597dde31ec9972e4ffdf91"
+      },
+      {
+        "key": "noniid_seed42_ga",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed42_ga\\20261110T092756.978604Z_ga_seed42",
+        "config_sha256": "f77b9edd4dedf334a91c4b060c1cbfaca26b1df4493b62589add5da80d30c1c6",
+        "metrics_sha256": "cf0b0c314554bde13344e872015f37427c331554ada41ea4be17733b4e90923a",
+        "predictions_sha256": "d75925aacce97bc4cc4353a56bb6f6157172637e0691be878347275d412abcc7",
+        "checkpoint_sha256": "9dc7ffb262ef332deba00ce9a578859f99f32a4d4450de2f8bd9c6ab71920c34"
+      },
+      {
+        "key": "noniid_seed42_noise",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed42_noise\\20261110T092813.847605Z_noise_seed42",
+        "config_sha256": "844f728a62fc22c44d0310e24152134f458a1ba1ad2c6d8b32f0bf46e6f31f2a",
+        "metrics_sha256": "fa3d54881fc87fb6e3eea480af88beee6073af0197c002744ccba7d0aac5875c",
+        "predictions_sha256": "d5c6f967b141454a53c8fcd05dcbbb567d9fc67ed66d12a6c12fea3179f0de5f",
+        "checkpoint_sha256": "f2b09661b26c95522c86c2eaccebb0e50a41f79e9eb0b34f254b2261bd3c847a"
+      },
+      {
+        "key": "noniid_seed42_unsir",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed42_unsir\\20261110T092901.095694Z_unsir_seed42",
+        "config_sha256": "1db28538a24ae2b0905bbb56e645e06d25b31acb2124fdaedef62bbf5cd1de57",
+        "metrics_sha256": "99cc175655525e7fde33366eb36561890fee0bba00deec26f81ea10030769170",
+        "predictions_sha256": "bcbeefae313b9743a35e286b91fbb0f72e04988d1c28838932e4520bf3a1bf6a",
+        "checkpoint_sha256": "7320e17bc8e94981cd9e55539046a1e4d21444e14155c090e7d09c44b8a8886d"
+      },
+      {
+        "key": "noniid_seed43_pretrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed43_pretrain\\20261110T092930.843160Z_pretrain_seed43",
+        "config_sha256": "6dc896f72b321b3063571b4da3b7faf67dd5e631267bf9272288dac239a66121",
+        "metrics_sha256": "c763b7c1fb2f7250f0ecbd202ffc966b13df3d120f3d1d795ac120e19e39a243",
+        "predictions_sha256": "b1488286e4f4f92639b708fc413e0d7287e14660c127a24462c6212027080f8d",
+        "checkpoint_sha256": "cb1a4bee9a99e44d70a503a42f97e976aa37735f39acd5ddacf5f6858d367c0a"
+      },
+      {
+        "key": "noniid_seed43_retrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed43_retrain\\20261110T094321.836906Z_retrain_seed43",
+        "config_sha256": "0124ff93b9e8e609361e66a6d52e2fbcf4761f3f236f673836639e4ceddb4a60",
+        "metrics_sha256": "d5bcc815e9662bb7f873a4b718017b784e8b6f14cd8097372e01bee4d6bc5ddf",
+        "predictions_sha256": "bc53a07f2be57f1ef51bf9efbb9284a62bc48420c564d9a8f1eca2a5a0d4caf1",
+        "checkpoint_sha256": "e8e2d24b10dafba91539d3039e5ca5253d2ab8d831ccff85accc068ecb422b50"
+      },
+      {
+        "key": "noniid_seed43_ft",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed43_ft\\20261110T095614.542761Z_ft_seed43",
+        "config_sha256": "9708dc640f00f4d05670da55cfaf40803729d679ad22aaa5f2eab20a764de813",
+        "metrics_sha256": "8880fd4aaca14412ad06f33002d2edafec6789ad719e98cb8792c6f118bfdedf",
+        "predictions_sha256": "89639d1186bdd0f98be07d1579c10fdf00534d1e08dc3ad6417bb03c556cfd72",
+        "checkpoint_sha256": "887cdf9fd753fd84d5a73570520b1285e466087f2a7fa39dcb13851af83f84cb"
+      },
+      {
+        "key": "noniid_seed43_ga",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed43_ga\\20261110T095702.757258Z_ga_seed43",
+        "config_sha256": "0e280555a60944d4d071e8daaae020544fd3eee131d1cae6eec7fe39311f1017",
+        "metrics_sha256": "5af9e7f7cf5050b1007c4af3fb1b2a51e36e1c7d410bb1491ca78af8e4ae4f6f",
+        "predictions_sha256": "5a1d58017d84c50fa3295d172218c538a8ac763b841ea91640543586856f0de7",
+        "checkpoint_sha256": "a51f332970809b3d8635cd11b0173a96201cfa0cad88d03cc16966b9e747324d"
+      },
+      {
+        "key": "noniid_seed43_noise",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed43_noise\\20261110T095719.512950Z_noise_seed43",
+        "config_sha256": "595a0c022c42d8f35a345edc9c4efc07769da058c59b931c40a6d33bb9754f5e",
+        "metrics_sha256": "3fe721bb641e45a8b16690aeb59439b3a614636326869fa8c17ff1c76b6b611c",
+        "predictions_sha256": "20c33fb277bd50bebbc0e0db8aee1b4082c31538bbf40c2b67e325befc0640a1",
+        "checkpoint_sha256": "311987bc72893a91465aaeddedbdd985a325d9ad70f83fec7159d0ee7411049f"
+      },
+      {
+        "key": "noniid_seed43_unsir",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed43_unsir\\20261110T095807.990476Z_unsir_seed43",
+        "config_sha256": "cb9fff7c16cf4832296c80d9a7159c0949d2538ff673e7669e12c26fc62bdb88",
+        "metrics_sha256": "a276b65739769710ba885c83791cb2008f6cdc1e4c38a3b0a1556dba520379ae",
+        "predictions_sha256": "0d832e3e197b88a03d778d6e98d17737879207a223f25f6704564264a7ccb945",
+        "checkpoint_sha256": "21082117c265164a6817bcffa37b97d490f10e8189847ab6bb9111fef370fb7a"
+      },
+      {
+        "key": "noniid_seed44_pretrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed44_pretrain\\20261110T095839.021367Z_pretrain_seed44",
+        "config_sha256": "8649935107c5c2b5487a5f09522fe35265cfa0cb17e501d0347b4d0c2507c242",
+        "metrics_sha256": "b3346c8c1980fd6019b1063cc3c2c0e322e88cdc8edbec6457d6951368448289",
+        "predictions_sha256": "aae87c68985fe206875f8a26eac90622ff384c2c52c9fd83db20b24664c1f44e",
+        "checkpoint_sha256": "366497f1c88e3e65c16bacd071e3be518b9a149c17d0f041da13569e32fb3be5"
+      },
+      {
+        "key": "noniid_seed44_retrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed44_retrain\\20261110T101232.504320Z_retrain_seed44",
+        "config_sha256": "fc019231498231d3db882fe01631a7dc55d08fbf1cbc495dee548bf403c77ea2",
+        "metrics_sha256": "bbcf2b98e40ca104b72d51f9fe8b3aa4d9795ff5583e4a72c0821903fcc285b0",
+        "predictions_sha256": "fc45b891e76e9dc3bc26030b31c415c5c1cc338896c6de78d9be779a7c2b085e",
+        "checkpoint_sha256": "45a83bd0c94779663504e805b748f92e4bf0e2709f529e3fe9ddce158ca3e98e"
+      },
+      {
+        "key": "noniid_seed44_ft",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed44_ft\\20261110T102511.676012Z_ft_seed44",
+        "config_sha256": "71ac88abd4cee16d4bd0a960500efb72a7069805963ff863afa5cc9f3cfb2f5b",
+        "metrics_sha256": "d79c5046525c90681d90089efed0415acbc0d83e480c7b10d3a15f60bceac8b9",
+        "predictions_sha256": "f7134e4ea5aa100b42d021c6ab7d10907c9cec686ba60ef6249c298d862a6986",
+        "checkpoint_sha256": "e71914e241da7c0e4d7e542c504f7365358d9d0fd9ea8571a9d1b3a59e60d00c"
+      },
+      {
+        "key": "noniid_seed44_ga",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed44_ga\\20261110T102600.694486Z_ga_seed44",
+        "config_sha256": "be39bfe815b97677548d73831ce65f9b25cdf1dc34a7c9753a33fdf9630f11e0",
+        "metrics_sha256": "15a5299810582c5824dd7d59a28af9606f74bd27f5b6b8bea9260e2149a7054e",
+        "predictions_sha256": "b570506565a1d6e4dbf557fc7f5f6cc6d1423997fffc9cfd8e2d82f2dd204003",
+        "checkpoint_sha256": "86cc81ddb186d8644d5151cdb498dd8cb327fb5592608e09efd055fa39b7b309"
+      },
+      {
+        "key": "noniid_seed44_noise",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed44_noise\\20261110T102616.720876Z_noise_seed44",
+        "config_sha256": "e5400f3ee6d0b11ca5fecf7eca665a870f5c2b19af5c35a98efa1483d85d4010",
+        "metrics_sha256": "4ac70da6a885916b8905124151999e9d8255632acadfa052fd6b807a0f21b5aa",
+        "predictions_sha256": "628949a8df006531f4619f5c2e9e59091d73d99e35b1796806e87eb70b379050",
+        "checkpoint_sha256": "8d5e1c327ab42969b7256c78bb7a4f378215a5a2ddf65ce15f8be0723506a2a8"
+      },
+      {
+        "key": "noniid_seed44_unsir",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed44_unsir\\20261110T102705.179855Z_unsir_seed44",
+        "config_sha256": "915eed55f1d51e9064aa99bb4065627b8a86df77d7fd9ffa73583f2ccfc9c0e7",
+        "metrics_sha256": "333c6daa6fea4b75c41220698c6baa9015650c51fbc609d1773123a98f5ef1f9",
+        "predictions_sha256": "d6c2dcb1d4cc932108d064a8c711c910c4812dd5d46f1c4866a4461b3aa2b4d6",
+        "checkpoint_sha256": "5475864d022f596a4e376781e6859a9799432563dcb263a2a0dbfe5675fe279b"
+      }
+    ]
+  },
+  "extension-alpha01": {
+    "suite_sha256": "bda967b288eb2a735138437d84d1abe22134ada1ce0d44d2cc172c1e244823d7",
+    "summary": {
+      "noniid/pretrain": {
+        "fa": {
+          "n": 3,
+          "mean": 0.4266666666666667,
+          "sd": 0.40929492219343905
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.4056666666666667,
+          "sd": 0.07794117756676396
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.40776666666666667,
+          "sd": 0.06809216792945672
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 503.7670766666997,
+          "sd": 7.230364542651577
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 39601.666666666664,
+          "sd": 917.678229737054
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.5906253333333333,
+          "sd": 0.0392126106926501
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.13799999999999998,
+          "sd": 0.04507771067833856
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.5883014074074074,
+          "sd": 0.019050007472644636
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.1300740740740741,
+          "sd": 0.042740869118492605
+        }
+      },
+      "noniid/retrain": {
+        "fa": {
+          "n": 3,
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.3937777777777778,
+          "sd": 0.11807237788641797
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.3544,
+          "sd": 0.10626514009777617
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 459.8833366666998,
+          "sd": 9.787339112525457
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 35823.333333333336,
+          "sd": 528.1650625830274
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.0,
+          "sd": 0.0
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.4923246666666666,
+          "sd": 0.014254189886953697
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.003333333333333336,
+          "sd": 0.014189197769195187
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.5778481481481482,
+          "sd": 0.020292179655644664
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.12362962962962963,
+          "sd": 0.04661814055500909
+        }
+      },
+      "noniid/ft": {
+        "fa": {
+          "n": 3,
+          "mean": 0.47866666666666663,
+          "sd": 0.3435204991457327
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.49800000000000005,
+          "sd": 0.0316826470399301
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.49606666666666666,
+          "sd": 0.020447330714138054
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 11.860409366665408,
+          "sd": 3.7835191546928466
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 890.0,
+          "sd": 350.820466905795
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.47623333333333334,
+          "sd": 0.041431429293874646
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.4627041021982829,
+          "sd": 0.03237860620016589
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.5916066666666667,
+          "sd": 0.028953805230631353
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.099282,
+          "sd": 0.03772089484622551
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.15266666666666664,
+          "sd": 0.0549302588136387
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.14933333333333332,
+          "sd": 0.06859543230662908
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.599354888888889,
+          "sd": 0.01490306404654131
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": 0.02150674074074077,
+          "sd": 0.005426212831752293
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.1482962962962963,
+          "sd": 0.028865232479412594
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.02466666666666666,
+          "sd": 0.017818010031467612
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 477494698.6666667,
+          "sd": 136759725.03625807
+        }
+      },
+      "noniid/ga": {
+        "fa": {
+          "n": 3,
+          "mean": 0.103,
+          "sd": 0.17323105957073634
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.39885185185185185,
+          "sd": 0.06665049186497893
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.3692666666666667,
+          "sd": 0.056271158983384494
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 3.0775860333039113,
+          "sd": 0.21137383020531533
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 210.0,
+          "sd": 5.0
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.3811,
+          "sd": 0.06564845771227226
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.3829326430956523,
+          "sd": 0.07180750322118694
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.55838,
+          "sd": 0.04380904582389349
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.06605533333333334,
+          "sd": 0.055819806890863854
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.09733333333333334,
+          "sd": 0.08500196076169854
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.09400000000000001,
+          "sd": 0.09901515035589255
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.5704482962962962,
+          "sd": 0.019342260096640425
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.00739985185185188,
+          "sd": 0.015915466080504044
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.11081481481481482,
+          "sd": 0.02991455596254464
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.012814814814814798,
+          "sd": 0.034445400225687886
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 477494698.6666667,
+          "sd": 136759725.03625807
+        }
+      },
+      "noniid/noise": {
+        "fa": {
+          "n": 3,
+          "mean": 0.018666666666666668,
+          "sd": 0.023072349974229616
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.4081111111111111,
+          "sd": 0.11246091227677044
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.36916666666666664,
+          "sd": 0.10319013195714664
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 11.626306733349338,
+          "sd": 3.7979810694097864
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 818.6666666666666,
+          "sd": 304.00877180327103
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.6127333333333334,
+          "sd": 0.12332486907892234
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.5968978007634481,
+          "sd": 0.11367029081575268
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.5470626666666667,
+          "sd": 0.009815382485330523
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.05473800000000001,
+          "sd": 0.020907115439486156
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.06333333333333328,
+          "sd": 0.03035347316755259
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.05999999999999994,
+          "sd": 0.04454211490264021
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.569058074074074,
+          "sd": 0.005141060525329606
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.008790074074074098,
+          "sd": 0.015378698203561279
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.10192592592592593,
+          "sd": 0.011420867479826985
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.021703703703703697,
+          "sd": 0.037585348690866105
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 485883306.6666667,
+          "sd": 139162314.48221508
+        }
+      },
+      "noniid/unsir": {
+        "fa": {
+          "n": 3,
+          "mean": 0.037,
+          "sd": 0.051507281038703646
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.4021111111111111,
+          "sd": 0.13397765614339957
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.3656,
+          "sd": 0.12465075210362751
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 6.505670599949856,
+          "sd": 1.912305186372835
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 462.6666666666667,
+          "sd": 164.27213194371507
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.6295666666666667,
+          "sd": 0.1724804143470595
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.6081317166487376,
+          "sd": 0.15895082024950455
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.561184,
+          "sd": 0.01930600776960373
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.06885933333333337,
+          "sd": 0.02319600675403707
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.09733333333333338,
+          "sd": 0.053153864707407045
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.09400000000000004,
+          "sd": 0.062385895841928884
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.5672521481481482,
+          "sd": 0.006293671531768565
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.010596000000000013,
+          "sd": 0.014991004596584522
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.10474074074074073,
+          "sd": 0.009038554820933978
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.01888888888888889,
+          "sd": 0.04080728572082728
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 485883306.6666667,
+          "sd": 139162314.48221508
+        }
+      },
+      "noniid/selection_random": {
+        "fa": {
+          "n": 3,
+          "mean": 0.04066666666666667,
+          "sd": 0.01903505538035898
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.3972222222222222,
+          "sd": 0.10020448229298397
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.36156666666666665,
+          "sd": 0.09089072193207255
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 6.808590000029653,
+          "sd": 1.9833507515681275
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 469.3333333333333,
+          "sd": 165.18272710345153
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.6119333333333333,
+          "sd": 0.13057305745571457
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.6012797951698303,
+          "sd": 0.11084049525407756
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.522764,
+          "sd": 0.05324217320883887
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.030439333333333356,
+          "sd": 0.04927422556807295
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.049333333333333375,
+          "sd": 0.04446721638840616
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.04600000000000004,
+          "sd": 0.04911211663123474
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.5668305185185185,
+          "sd": 0.005233266790486745
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.0110176296296296,
+          "sd": 0.015595108763641192
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.0971111111111111,
+          "sd": 0.021357625058703228
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.026518518518518514,
+          "sd": 0.025415396649103767
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 485883306.6666667,
+          "sd": 139162314.48221508
+        }
+      },
+      "noniid/selection_confidence": {
+        "fa": {
+          "n": 3,
+          "mean": 0.012000000000000002,
+          "sd": 0.01044030650891055
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.3647777777777777,
+          "sd": 0.09290503581083398
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.32949999999999996,
+          "sd": 0.08265766752092632
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 7.8618357999172686,
+          "sd": 2.56980438265854
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 469.3333333333333,
+          "sd": 165.18272710345153
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.6550666666666667,
+          "sd": 0.11549278476741887
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.6366304159164429,
+          "sd": 0.10234678867435057
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.5474266666666666,
+          "sd": 0.020509391929877736
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.055102000000000005,
+          "sd": 0.031773874614217275
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.06799999999999995,
+          "sd": 0.005291502622129186
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.06466666666666661,
+          "sd": 0.013316656236958798
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.5597241481481482,
+          "sd": 0.007456278147905253
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.01812399999999999,
+          "sd": 0.015911790747434033
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.0802962962962963,
+          "sd": 0.014702537503896987
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.043333333333333335,
+          "sd": 0.03191733148906274
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 485883306.6666667,
+          "sd": 139162314.48221508
+        }
+      },
+      "noniid/impair_only": {
+        "fa": {
+          "n": 3,
+          "mean": 0.007666666666666666,
+          "sd": 0.00862167810425171
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.3737037037037037,
+          "sd": 0.18200530223362246
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.3371,
+          "sd": 0.16463061683660182
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 5.301396133300538,
+          "sd": 1.319877133072101
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 284.6666666666667,
+          "sd": 95.05963040814609
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.6531666666666666,
+          "sd": 0.18691817282793374
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.6577152212460836,
+          "sd": 0.14377935343756568
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.5016026666666668,
+          "sd": 0.05224288297302643
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.009278000000000028,
+          "sd": 0.043267657343563234
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.004000000000000041,
+          "sd": 0.06702238432046417
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.0006666666666667043,
+          "sd": 0.053153864707407045
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.5431705925925926,
+          "sd": 0.031498477795345335
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": -0.03467755555555552,
+          "sd": 0.04614340837159896
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.061037037037037035,
+          "sd": 0.04940002165908123
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": -0.0625925925925926,
+          "sd": 0.0868608460951316
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 485883306.6666667,
+          "sd": 139162314.48221508
+        }
+      },
+      "noniid/repair_only": {
+        "fa": {
+          "n": 3,
+          "mean": 0.14933333333333335,
+          "sd": 0.12123255888305474
+        },
+        "ra": {
+          "n": 3,
+          "mean": 0.48907407407407416,
+          "sd": 0.06836759153295122
+        },
+        "accuracy": {
+          "n": 3,
+          "mean": 0.4551,
+          "sd": 0.0716945604631202
+        },
+        "seconds": {
+          "n": 3,
+          "mean": 8.149041466686564,
+          "sd": 3.4245981564847567
+        },
+        "local_optimizer_steps": {
+          "n": 3,
+          "mean": 534.0,
+          "sd": 210.492280143477
+        },
+        "disagreement": {
+          "n": 3,
+          "mean": 0.5699333333333333,
+          "sd": 0.1277548172607723
+        },
+        "tv": {
+          "n": 3,
+          "mean": 0.5519442160924276,
+          "sd": 0.1219279785525887
+        },
+        "target_macro_auc": {
+          "n": 3,
+          "mean": 0.6054759999999999,
+          "sd": 0.04734615426832472
+        },
+        "delta_target_macro_auc": {
+          "n": 3,
+          "mean": 0.11315133333333333,
+          "sd": 0.05395659575374762
+        },
+        "target_macro_advantage": {
+          "n": 3,
+          "mean": 0.16400000000000003,
+          "sd": 0.0995791142760368
+        },
+        "delta_target_macro_advantage": {
+          "n": 3,
+          "mean": 0.1606666666666667,
+          "sd": 0.11116354318450511
+        },
+        "retained_macro_auc": {
+          "n": 3,
+          "mean": 0.5950658518518518,
+          "sd": 0.01390983816031266
+        },
+        "delta_retained_macro_auc": {
+          "n": 3,
+          "mean": 0.017217703703703718,
+          "sd": 0.006433345539552272
+        },
+        "retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.14029629629629634,
+          "sd": 0.02875295654864152
+        },
+        "delta_retained_macro_advantage": {
+          "n": 3,
+          "mean": 0.01666666666666669,
+          "sd": 0.019453013984635354
+        },
+        "event_payload_bytes": {
+          "n": 3,
+          "mean": 477494698.6666667,
+          "sd": 136759725.03625807
+        }
+      }
+    },
+    "paired_selection": {
+      "noniid": {
+        "seeds": [
+          42,
+          43,
+          44
+        ],
+        "confidence_minus_random": {
+          "fa": {
+            "n": 3,
+            "mean": -0.02866666666666667,
+            "sd": 0.022030282189144407
+          },
+          "ra": {
+            "n": 3,
+            "mean": -0.03244444444444444,
+            "sd": 0.010187743786373443
+          },
+          "accuracy": {
+            "n": 3,
+            "mean": -0.03206666666666668,
+            "sd": 0.00969965635130098
+          },
+          "seconds": {
+            "n": 3,
+            "mean": 1.053245799887615,
+            "sd": 0.6282015324598982
+          },
+          "tv": {
+            "n": 3,
+            "mean": 0.03535062074661255,
+            "sd": 0.02217212168247988
+          },
+          "target_macro_auc": {
+            "n": 3,
+            "mean": 0.02466266666666665,
+            "sd": 0.04828665510607805
+          }
+        }
+      }
+    },
+    "evidence": [
+      {
+        "key": "noniid_seed42_pretrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_pretrain\\20261110T055114.644424Z_pretrain_seed42",
+        "config_sha256": "7db4baa1f2937ff78753bb383e9a000164e9d58f53c9bae6965b993e6b6cf750",
+        "metrics_sha256": "56fe49ccd8a09cf2b2de15b107b212fc580b49cc925e15de925d5d788ff1a7fb",
+        "predictions_sha256": "69168827228eb45bf69905da6b4cda04fc52e5386d2c0ebf39e36014cb413699",
+        "checkpoint_sha256": "c57ab8e04d1558a29d4b822c6ad3d67d250a9e0c86283f2adb1e059e59475094"
+      },
+      {
+        "key": "noniid_seed42_retrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_retrain\\20261110T055946.504874Z_retrain_seed42",
+        "config_sha256": "34d8ce47d028dcf91c0ecd246f9e7a5d360146d71113c347dd226f5c70fb2fd1",
+        "metrics_sha256": "93c326a2645dc5f74586db83f8a7969cfe8a0d34ec9d104922b3c69023099825",
+        "predictions_sha256": "d77c0292c17440866ef2f0cecf5669641dc1a4fb446c52c07dd34bef34072d0c",
+        "checkpoint_sha256": "7c17f622285d9c55dda4ea4b316b6fb1a2a42b8f7c6950d128f1786821accb60"
+      },
+      {
+        "key": "noniid_seed42_ft",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_ft\\20261110T060745.158412Z_ft_seed42",
+        "config_sha256": "55fe3693371e9c13b1cbfec21cc33c64e2bdc132e3fad7a1336b6c9426888f8f",
+        "metrics_sha256": "31d126a11f0bbcaa1451336345c3b9437a454945dbe439dae75ab5122c8bb6bf",
+        "predictions_sha256": "0141cd90b59beddf98a3446e7570b658a91f49724cbc2035cf7cc92989bacb71",
+        "checkpoint_sha256": "3a0fe84609c848246f78d7473936239553af5a227602bb1ebb0526f003e469dc"
+      },
+      {
+        "key": "noniid_seed42_ga",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_ga\\20261110T060802.833078Z_ga_seed42",
+        "config_sha256": "c1eb9ebc180ab8d6cf8f5c5234610374bad89a83c8f1581ee53097c398b14db6",
+        "metrics_sha256": "5d4ab9b15b764b6035284b1d91361833a268e0e6b4ff9111d882a72b01f5f411",
+        "predictions_sha256": "ae4b3dd5d2bbb7078b5709dc65beab3149718203105b516d711bf63918fda4fd",
+        "checkpoint_sha256": "88a201fed0f321c6dc1961be9265879bc649d62274eb1934aa6603f6469d5334"
+      },
+      {
+        "key": "noniid_seed42_noise",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_noise\\20261110T060815.396252Z_noise_seed42",
+        "config_sha256": "92069270e8229be038214f57cc4d7d5d72a28fd31cb3cb338314bdf67752ff16",
+        "metrics_sha256": "a17477c2c8c7f74790320e9d533707f423930f26b539526704abc1ad51583786",
+        "predictions_sha256": "0c403fc2043298c4fe7afe6be9d03eac6d2152568c2e47167d2ae8c84b040cfa",
+        "checkpoint_sha256": "7e88ea9e037eb916760f98f6c82f662af289385192c5962344fe96a144479e36"
+      },
+      {
+        "key": "noniid_seed42_unsir",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_unsir\\20261110T060832.428429Z_unsir_seed42",
+        "config_sha256": "0766064bda034c34ef46094f0ff3d3259b8e3ee5e2f4ec0694251325a843dd6c",
+        "metrics_sha256": "d7ca33644cfae23aeac51c94f02202071a3f5d9c2faa199e7700e7951cdea23f",
+        "predictions_sha256": "8083c314428f1cac3dc25d4f5bac47fa43d50a03b9f7142e5f03a7e6b9e16386",
+        "checkpoint_sha256": "6cfe9b234c28284042eb08801093ccbf598ebde527335fedcb7d10780adac08a"
+      },
+      {
+        "key": "noniid_seed42_selection_random",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_selection_random\\20261110T060846.411607Z_noise_seed42",
+        "config_sha256": "5010f247ecf9df8b91b937cdb5d8eb8bbcde50a46382a2958a7fa25dfb658573",
+        "metrics_sha256": "09f2b675ce5b4fa5c2a970e8c611fda7de8c775a8c61cd2da029beb02bdc7b18",
+        "predictions_sha256": "19a0cc92fa1803d4a6ee6d48d871d8a2dbd5000f21b1d93663db445ee83da51e",
+        "checkpoint_sha256": "f50bb49a3ac388bc81bf5f8cedfaf3178c078341e9c451653450f938e7ffeb02"
+      },
+      {
+        "key": "noniid_seed42_selection_confidence",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_selection_confidence\\20261110T060900.684462Z_noise_seed42",
+        "config_sha256": "0578c1dff5f987dd9894e068cbccf59cc318ee23ce84d62e45bfb3c6db730183",
+        "metrics_sha256": "cd93c764a51ade7672a14ec8355e24ad21bbbcd8b8f69d0b0e0bfc1db1922dde",
+        "predictions_sha256": "80908028b79548b75ecb89a0991a0f192eb0ce9aa718b342095da9f97455c61f",
+        "checkpoint_sha256": "ee67b173ee700389231dbfe0c868a961bc68f745d8e2a4ba2097f964666193bc"
+      },
+      {
+        "key": "noniid_seed42_impair_only",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_impair_only\\20261110T060915.170949Z_noise_seed42",
+        "config_sha256": "cfc14dd48e77b779bf658e9e9d473abe9a56c3f82ed70fc01554978b2a551839",
+        "metrics_sha256": "59d83c98830f4a0d630f1489bc2cdf07d0d19cef97dd3d2a10e779e2ecce943a",
+        "predictions_sha256": "35d8be0b90bf3d5f9b934d2a1ee645635d5df7fc4131b69beef595ca40127510",
+        "checkpoint_sha256": "de9aeee9fd9fd49fe45af10642b72aaff4adb7a984e99ec195e85972114541ca"
+      },
+      {
+        "key": "noniid_seed42_repair_only",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed42_repair_only\\20261110T060928.581380Z_noise_seed42",
+        "config_sha256": "65e7a435ddbdc0fe5e4bc7d6f39fb6163ec72e58e38147750ffa5269795fd155",
+        "metrics_sha256": "3c08ec5fe83953c740641c32d46245487d8c93791370a6fd955d6be668ca6041",
+        "predictions_sha256": "ae81fd6f024306db5999a3a96ea7731c80d5709b3776336843409343f0953d6d",
+        "checkpoint_sha256": "bfd26add1cf92d16eb576aa021c3ea1d1340a9de5f7403930af9c6b13d58846e"
+      },
+      {
+        "key": "noniid_seed43_pretrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_pretrain\\20261110T060942.372780Z_pretrain_seed43",
+        "config_sha256": "980bdc9268d5291475c6f9aff5525ef39d07ccff35d14465aa36f4e9965bd19d",
+        "metrics_sha256": "c6eb4be4ea10c39687fd7078c766b0ca9b8c3bd1af8de5be0e916f567110d349",
+        "predictions_sha256": "d9d2d416706f28df651145c00bba4e64d3cd4b220f87e89b3c3c3ad6a8929054",
+        "checkpoint_sha256": "70a3a33223933b9e08af6de9a51a13b5442e9bf4fba09b98d4c295260ea98036"
+      },
+      {
+        "key": "noniid_seed43_retrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_retrain\\20261110T061821.521835Z_retrain_seed43",
+        "config_sha256": "f644bfd9669a17c47e9fb193a8bc656e254580541cf3c73276fe89b92ea2be56",
+        "metrics_sha256": "9e9dccd1e526194a0d17e3c985ee6061bb2397177a93f0acc1f152730073e0ed",
+        "predictions_sha256": "792d9c06b95ae71192be953ed8c5d99810e89a2cb616e4d436aa2f9b9dc58153",
+        "checkpoint_sha256": "e29f31cdd72817d8a491ad353091a1df68de07c2a4e466e82b3844fa7e353366"
+      },
+      {
+        "key": "noniid_seed43_ft",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_ft\\20261110T062608.202756Z_ft_seed43",
+        "config_sha256": "1a841e5ef5d9b89db03beec82b9a242b4eb49d9379b0135f5c400606d57695af",
+        "metrics_sha256": "ba5bda0abf4b65db7a76a2f1237166e33fbf8dd8e1966ae5a2cac62114b03bd9",
+        "predictions_sha256": "a8f4a877a3a99579026b27fc7adf604679e37f66db53539125f6686d8b2e24ca",
+        "checkpoint_sha256": "b708f2eeb8e67e4f271af3fda35a20d3d0e31d08f388e5749fb106a249b6bdd1"
+      },
+      {
+        "key": "noniid_seed43_ga",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_ga\\20261110T062631.057137Z_ga_seed43",
+        "config_sha256": "0b2824de8f00f80646f2b074d94b64025d3ab5eef2f883f7850ada1aeb92e2fa",
+        "metrics_sha256": "8849ca85f8d8461efe1bdcdd2b23695500735d2bb1f7bbb433ebd9dcaacd7793",
+        "predictions_sha256": "8ade90929342f867ac0ec4fadca2199d696304b68c8a8d97becb294f3df16efa",
+        "checkpoint_sha256": "e6aea56303fa90141160c71ce9bd44c811b845dfd38e1891201c1d8d6452d0c7"
+      },
+      {
+        "key": "noniid_seed43_noise",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_noise\\20261110T062643.915993Z_noise_seed43",
+        "config_sha256": "462532310669b15cbaff8ae9860b0d38a00b07f9b8f990ea4835475c0552d342",
+        "metrics_sha256": "10b157c8ae5f060c4815cef543dc89f906d6284af0d9e3ebf967d4ce91c7f0e5",
+        "predictions_sha256": "8a3950e613f987d5a33d03c4c5da9b397891b97c4fa54b4c9832e0017f1b18f5",
+        "checkpoint_sha256": "c4f591436b67c0d338205e7d956f8e0ba558c26f0973ddfa488ae3b1b0a2a8d7"
+      },
+      {
+        "key": "noniid_seed43_unsir",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_unsir\\20261110T062707.076357Z_unsir_seed43",
+        "config_sha256": "399b502b6f8521878486ed5701687caeeb0e8dc6748ea6776366c215432af943",
+        "metrics_sha256": "6e561d65b79635dfcb97896a8c2c1252cb03a05cd76e036328c0b57b49c2d8b7",
+        "predictions_sha256": "3ffe488d44278b91a337a53f3672c1fc5f35924803a2958a31dac420fc97cd93",
+        "checkpoint_sha256": "0abc848fc95bc1bc4a96417f1997d4628f4a9468a422656a39a230e28ec1b29e"
+      },
+      {
+        "key": "noniid_seed43_selection_random",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_selection_random\\20261110T062723.292016Z_noise_seed43",
+        "config_sha256": "319182f8bee6220a3e17b8a3c25586f03fae0ac15010c02933b4b8048d50e1c3",
+        "metrics_sha256": "5b8e0b4edeed274b385375c6096fade2d54d8ca13c1eca729ce46a5182305ebb",
+        "predictions_sha256": "207ab239c5a964d2060f6ecfcf56dc18954ddbf79bc7027471d33357583ab078",
+        "checkpoint_sha256": "02479849ffb42c764edee68827d389c48a9cfaafd49ffb2c0c69488208b611aa"
+      },
+      {
+        "key": "noniid_seed43_selection_confidence",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_selection_confidence\\20261110T062740.515016Z_noise_seed43",
+        "config_sha256": "bf8651662aba32dabddd0faf54722a539c0955a32465bf5c02b7149131682b3c",
+        "metrics_sha256": "f417887810dda571cdd4f059e2a5036f63d187ad4b1f32f9c3e6d80d03afeaee",
+        "predictions_sha256": "790e9374ceca57ddf49bba30cf630366b1cdfc92902ca6afdf9c606a6488f56f",
+        "checkpoint_sha256": "c314c7889d985f464253693321e2043eea8e6c7d5b20cd928c7a13c2f7a4a541"
+      },
+      {
+        "key": "noniid_seed43_impair_only",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_impair_only\\20261110T062759.136250Z_noise_seed43",
+        "config_sha256": "2b5cfbad2d81775cb9d88e5f9c8d2ff41d1105129de180ec8da4a7827860e355",
+        "metrics_sha256": "530222abfee6c8a83c1f0b0cb8739c30efbfce82ce4c65f367cc51b5328d5344",
+        "predictions_sha256": "d0f6e39822dc5ced1b62eeb5a9ee7b1e9bbd0498db462b097c45212d225e179f",
+        "checkpoint_sha256": "79ea8d43cb694a8504e50c282d50f1f6c4dab6f3035c661bcef908c7ff2eaa78"
+      },
+      {
+        "key": "noniid_seed43_repair_only",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed43_repair_only\\20261110T062814.806444Z_noise_seed43",
+        "config_sha256": "e7a06d6fc9032eb72102962b042376b0182a87cea9da7e79839b983d509cdce3",
+        "metrics_sha256": "d441277eb57282ec78cca9febdf5e1d47f4d4b8d8b12feaba2107a355ada43b6",
+        "predictions_sha256": "17b54f662e0ffc49c0fbe6fdf34c0e81b3688d01fdbb9963bd7509e3215447a9",
+        "checkpoint_sha256": "b8c97cdc00a8d1818ccb50e03b4ae628f036b613d185c7f847f83ca16acc0469"
+      },
+      {
+        "key": "noniid_seed44_pretrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_pretrain\\20261110T062833.705624Z_pretrain_seed44",
+        "config_sha256": "62661f24554ec4f122f689562b9fe2e723acd47dec15daf344a00ea5112ee068",
+        "metrics_sha256": "60b6dc65a6474ed84692b89bf200129c3f61182c09055ee6add906a98f8ddffc",
+        "predictions_sha256": "6dd60332a1e553838ea13c9e34edd3d0db06dede9732b0a2ec57392948d2c3d8",
+        "checkpoint_sha256": "ecd23c5e42422f8d25ee99654f3c795aed922248c419d7559a434e36d4254083"
+      },
+      {
+        "key": "noniid_seed44_retrain",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_retrain\\20261110T063658.007160Z_retrain_seed44",
+        "config_sha256": "c93732c6da4a6a52d0f22c0e5175927e940b97eb16dfb1b64109269259713554",
+        "metrics_sha256": "b8c10035312aed60ed6b38ff81016d7307444505c58ed65431aef428a5a8eb2a",
+        "predictions_sha256": "85cdb14c660cdbc643992ea19e8ccf7d90534bb5362f8647bf445d9c907ad78a",
+        "checkpoint_sha256": "208a8a28b0567930a6b34e17f698efb5439ef460c83e051abb3cc73febc9b00b"
+      },
+      {
+        "key": "noniid_seed44_ft",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_ft\\20261110T064436.676891Z_ft_seed44",
+        "config_sha256": "5481bf7b7d882470ed3f2f08700721715693992650c765248e1218cfedb3016f",
+        "metrics_sha256": "43c9562c30c0a24e6a4e5d115a95ad8fb57d16143d3e47997cadb1b841f1ff8b",
+        "predictions_sha256": "f9354b753c0fc6c7bc66a0aaf805c0b7a55f19dbedd353cf65ed9c57996f58aa",
+        "checkpoint_sha256": "cb6635d529eb0703bcfadbeb8c71e1e47507022d88131223792b1efe2c323838"
+      },
+      {
+        "key": "noniid_seed44_ga",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_ga\\20261110T064501.307390Z_ga_seed44",
+        "config_sha256": "9624cdbef7372289094eaa5bb2aed5990b7278a340780b00df7dc15909a647a9",
+        "metrics_sha256": "b288f899b18592b3631122e96642e5e4e0fb1fe160a7e40ad069e3979d741548",
+        "predictions_sha256": "01c84599c23a3a305aee66f15886d99b369049b8b84dc0b8dec2cc790c259d9a",
+        "checkpoint_sha256": "f45c8f04213f6b29590ac0014588dc837d874eeb1b9c469e59ce7ffbf8553ecd"
+      },
+      {
+        "key": "noniid_seed44_noise",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_noise\\20261110T064513.653243Z_noise_seed44",
+        "config_sha256": "d5da3f3ce9b2f06f12281626fdda161dde322301f04d4bf10cbd951906839d6c",
+        "metrics_sha256": "b5d94547d35fc66ac078e9842bfe5fecfaa1a43c9ca69da40da331b215016cf6",
+        "predictions_sha256": "4ce6286ac7326a5bcf3af490755585bfb26cca5cbebdecc3a321c6f65f2149c9",
+        "checkpoint_sha256": "7a9a9aea61e9635e463bd7dcf1dc1ada228448ddadef5efb242d41908aef2a13"
+      },
+      {
+        "key": "noniid_seed44_unsir",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_unsir\\20261110T064537.029591Z_unsir_seed44",
+        "config_sha256": "28e32d9880e3df4e31b2376b701ec18f7574784938e8b5db8c98a98614a0f3c4",
+        "metrics_sha256": "bd11607c049e9faaa2ae9a7e7ed8db3852ed233f7e7c23cdfa691a151aa83d73",
+        "predictions_sha256": "45dba34c666a0a25e935abd82ce12fc65f58ccdb477f6ebbf20b54695219e5de",
+        "checkpoint_sha256": "849ff6e542b8c17bd9894bb23d1e545152dcb421b4b4b1154903f18de19522ea"
+      },
+      {
+        "key": "noniid_seed44_selection_random",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_selection_random\\20261110T064554.836432Z_noise_seed44",
+        "config_sha256": "a1268bdae7d8c8614435d4b9cb11abe78e7d5007e5cd300dd0e6f7a873b23bf0",
+        "metrics_sha256": "df2ca1b411f4b324697968383f9500caadbf4f2ec34eda3d264e1669011c2642",
+        "predictions_sha256": "b9622abb66b8d8035f017e9e9816603b7f382ecf7c2ab0a54c14202d4a3360a9",
+        "checkpoint_sha256": "8783cdf23d8222c1e30d644b198adbc09fb3571d6d9a62cc81df84e67ad1f601"
+      },
+      {
+        "key": "noniid_seed44_selection_confidence",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_selection_confidence\\20261110T064612.768831Z_noise_seed44",
+        "config_sha256": "545cb66cf3ccb6e3259eb929baa14355c446a0d0ba4d399f70e6512b6c45cec7",
+        "metrics_sha256": "d0f00df29d2e0df1f54c6312bcb22c9de97c0a3fe8e9d6022503e4500ab00f71",
+        "predictions_sha256": "14d50e425164df062a80a50b3a7e198bd43a08bdd1be4460393dd79576c80871",
+        "checkpoint_sha256": "f912c80ad8b3e8e54e17aca716ff9e14d54334b71b77d7e2b46c2289fa366abb"
+      },
+      {
+        "key": "noniid_seed44_impair_only",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_impair_only\\20261110T064631.731020Z_noise_seed44",
+        "config_sha256": "9a1df0a1696bc183b6313eea7b7c69b7a355650beaf70a66208237d3a136b288",
+        "metrics_sha256": "f5a6f09cdbe4c7bbd1bbf2a25bb6c4a675d1bba398fa3c1e83e56c5ef00c37d1",
+        "predictions_sha256": "61a43504d4c1d8db803ba47d8b8d20c028a8527f33132c298f02c077f0220270",
+        "checkpoint_sha256": "b29ac766425f40c29cb4f90273938a12be525e8eb1c87e4ca1050428b4fcf5c6"
+      },
+      {
+        "key": "noniid_seed44_repair_only",
+        "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-alpha01\\noniid_seed44_repair_only\\20261110T064646.829274Z_noise_seed44",
+        "config_sha256": "3a6c2090d07efec741ca681396b4f3ebaf8e8f767f253a61e97b88c62b8a9d4d",
+        "metrics_sha256": "f42fb1e5fb6e9e947ebf4c57e86e3f0c23e69894a906e27d46eb7facee55471f",
+        "predictions_sha256": "385bbf9826a949ffbe75bb542efd7b3a964da4aaee948cbed8419e65327891c4",
+        "checkpoint_sha256": "195f67221d75c51f52babb4f13b05e6d22072e47f0ed0ee599b25c636455e05d"
+      }
+    ]
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "before": {
+    "test_acc": 0.6808,
+    "forget_acc": 0.058,
+    "retain_acc": 0.75,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "after": {
+    "test_acc": 0.6773,
+    "forget_acc": 0.0,
+    "retain_acc": 0.7525555555555555,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "method_seconds": 41.61701630000243,
+  "optimizer_steps": 3600,
+  "communication": {
+    "network_latency_measured": false,
+    "note": "FL continuation tensor transport not simulated"
+  },
+  "pilot": false,
+  "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\continuation\\iid_seed42_unsir\\20261112T081117.671346Z_unsir_seed42",
+  "membership": {
+    "attack": "class-conditioned calibrated negative cross entropy",
+    "access": "black-box posterior and true class label",
+    "per_class": {
+      "0": {
+        "auc": 0.632096,
+        "advantage": 0.21400000000000002,
+        "tpr": 0.662,
+        "fpr": 0.448,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -14.213763236999512,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "1": {
+        "auc": 0.617338,
+        "advantage": 0.22799999999999998,
+        "tpr": 0.86,
+        "fpr": 0.632,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0012903190217912197,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "2": {
+        "auc": 0.752418,
+        "advantage": 0.42600000000000005,
+        "tpr": 0.926,
+        "fpr": 0.5,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.028585538268089294,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "3": {
+        "auc": 0.819502,
+        "advantage": 0.5519999999999999,
+        "tpr": 0.814,
+        "fpr": 0.262,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.004974618554115295,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "4": {
+        "auc": 0.722436,
+        "advantage": 0.39799999999999996,
+        "tpr": 0.852,
+        "fpr": 0.454,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0003289525047875941,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "5": {
+        "auc": 0.737384,
+        "advantage": 0.424,
+        "tpr": 0.888,
+        "fpr": 0.464,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.009643291123211384,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "6": {
+        "auc": 0.62179,
+        "advantage": 0.27,
+        "tpr": 0.898,
+        "fpr": 0.628,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.001081335823982954,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "7": {
+        "auc": 0.619434,
+        "advantage": 0.242,
+        "tpr": 0.866,
+        "fpr": 0.624,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0020629572682082653,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "8": {
+        "auc": 0.540048,
+        "advantage": 0.138,
+        "tpr": 0.886,
+        "fpr": 0.748,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0014182846061885357,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "9": {
+        "auc": 0.655414,
+        "advantage": 0.2879999999999999,
+        "tpr": 0.94,
+        "fpr": 0.652,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.007137257140129805,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      }
+    },
+    "groups": {
+      "target": {
+        "macro_auc": 0.632096,
+        "macro_advantage": 0.21400000000000002,
+        "class_count": 1
+      },
+      "retained": {
+        "macro_auc": 0.6761960000000001,
+        "macro_advantage": 0.32955555555555555,
+        "class_count": 9
+      }
+    }
+  },
+  "retrain_distance": {
+    "prediction_disagreement": 0.2503,
+    "total_variation": 0.2492120862007141
+  },
+  "reference_membership": {
+    "attack": "class-conditioned calibrated negative cross entropy",
+    "access": "black-box posterior and true class label",
+    "per_class": {
+      "0": {
+        "auc": 0.503276,
+        "advantage": 0.020000000000000018,
+        "tpr": 0.858,
+        "fpr": 0.838,
+        "calibrated_sign": -1,
+        "calibrated_threshold": 21.1982421875,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "1": {
+        "auc": 0.620758,
+        "advantage": 0.236,
+        "tpr": 0.894,
+        "fpr": 0.658,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0032902187667787075,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "2": {
+        "auc": 0.756244,
+        "advantage": 0.438,
+        "tpr": 0.852,
+        "fpr": 0.414,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.02200906164944172,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "3": {
+        "auc": 0.823612,
+        "advantage": 0.562,
+        "tpr": 0.872,
+        "fpr": 0.31,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.02765052393078804,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "4": {
+        "auc": 0.72279,
+        "advantage": 0.34800000000000003,
+        "tpr": 0.804,
+        "fpr": 0.456,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0014228209620341659,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "5": {
+        "auc": 0.739246,
+        "advantage": 0.406,
+        "tpr": 0.884,
+        "fpr": 0.478,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0241753738373518,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "6": {
+        "auc": 0.608662,
+        "advantage": 0.244,
+        "tpr": 0.894,
+        "fpr": 0.65,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.008764957077801228,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "7": {
+        "auc": 0.620256,
+        "advantage": 0.2879999999999999,
+        "tpr": 0.944,
+        "fpr": 0.656,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.013748851604759693,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "8": {
+        "auc": 0.555642,
+        "advantage": 0.14,
+        "tpr": 0.902,
+        "fpr": 0.762,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.000987301697023213,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "9": {
+        "auc": 0.65706,
+        "advantage": 0.278,
+        "tpr": 0.866,
+        "fpr": 0.588,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.002580273197963834,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      }
+    },
+    "groups": {
+      "target": {
+        "macro_auc": 0.503276,
+        "macro_advantage": 0.020000000000000018,
+        "class_count": 1
+      },
+      "retained": {
+        "macro_auc": 0.6782522222222221,
+        "macro_advantage": 0.32666666666666666,
+        "class_count": 9
+      }
+    }
+  },
+  "membership_difference_from_retrain": {
+    "target": {
+      "macro_auc": 0.12882000000000005,
+      "macro_advantage": 0.194
+    },
+    "retained": {
+      "macro_auc": -0.002056222222222015,
+      "macro_advantage": 0.0028888888888888853
+    }
+  },
+  "reference_sha256": "774b45db180bc85c0dbecab599359321af1fe9b799964b2fb7cb9ba202070ab9"
+}

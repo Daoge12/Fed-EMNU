@@ -1,0 +1,277 @@
+{
+  "before": {
+    "test_acc": 0.6858,
+    "forget_acc": 0.082,
+    "retain_acc": 0.7528888888888889,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "after": {
+    "test_acc": 0.674,
+    "forget_acc": 0.0,
+    "retain_acc": 0.7488888888888889,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "method_seconds": 47.91134239999883,
+  "optimizer_steps": 3600,
+  "communication": {
+    "network_latency_measured": false,
+    "note": "FL continuation tensor transport not simulated"
+  },
+  "pilot": false,
+  "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\continuation\\iid_seed43_noise\\20261112T081356.312203Z_noise_seed43",
+  "membership": {
+    "attack": "class-conditioned calibrated negative cross entropy",
+    "access": "black-box posterior and true class label",
+    "per_class": {
+      "0": {
+        "auc": 0.600316,
+        "advantage": 0.15600000000000003,
+        "tpr": 0.64,
+        "fpr": 0.484,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -15.73974895477295,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "1": {
+        "auc": 0.622372,
+        "advantage": 0.23399999999999999,
+        "tpr": 0.84,
+        "fpr": 0.606,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.00034302397398278117,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "2": {
+        "auc": 0.74975,
+        "advantage": 0.45,
+        "tpr": 0.876,
+        "fpr": 0.426,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0036416719667613506,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "3": {
+        "auc": 0.81379,
+        "advantage": 0.536,
+        "tpr": 0.846,
+        "fpr": 0.31,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.004583894740790129,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "4": {
+        "auc": 0.716466,
+        "advantage": 0.398,
+        "tpr": 0.91,
+        "fpr": 0.512,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.009754875674843788,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "5": {
+        "auc": 0.740192,
+        "advantage": 0.438,
+        "tpr": 0.878,
+        "fpr": 0.44,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.010656008496880531,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "6": {
+        "auc": 0.590406,
+        "advantage": 0.19199999999999995,
+        "tpr": 0.818,
+        "fpr": 0.626,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -6.401744030881673e-05,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "7": {
+        "auc": 0.641646,
+        "advantage": 0.29400000000000004,
+        "tpr": 0.878,
+        "fpr": 0.584,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0021532096434384584,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "8": {
+        "auc": 0.5858,
+        "advantage": 0.1479999999999999,
+        "tpr": 0.96,
+        "fpr": 0.812,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.004624014254659414,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "9": {
+        "auc": 0.605868,
+        "advantage": 0.256,
+        "tpr": 0.936,
+        "fpr": 0.68,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.006144707091152668,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      }
+    },
+    "groups": {
+      "target": {
+        "macro_auc": 0.600316,
+        "macro_advantage": 0.15600000000000003,
+        "class_count": 1
+      },
+      "retained": {
+        "macro_auc": 0.6740322222222221,
+        "macro_advantage": 0.3273333333333333,
+        "class_count": 9
+      }
+    }
+  },
+  "retrain_distance": {
+    "prediction_disagreement": 0.2523,
+    "total_variation": 0.24961347877979279
+  },
+  "reference_membership": {
+    "attack": "class-conditioned calibrated negative cross entropy",
+    "access": "black-box posterior and true class label",
+    "per_class": {
+      "0": {
+        "auc": 0.515378,
+        "advantage": -0.006000000000000005,
+        "tpr": 0.172,
+        "fpr": 0.178,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -23.166244506835938,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "1": {
+        "auc": 0.627506,
+        "advantage": 0.2659999999999999,
+        "tpr": 0.95,
+        "fpr": 0.684,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.007236674893647432,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "2": {
+        "auc": 0.738044,
+        "advantage": 0.402,
+        "tpr": 0.794,
+        "fpr": 0.392,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0011271031107753515,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "3": {
+        "auc": 0.823524,
+        "advantage": 0.5800000000000001,
+        "tpr": 0.876,
+        "fpr": 0.296,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.011787050403654575,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "4": {
+        "auc": 0.708322,
+        "advantage": 0.354,
+        "tpr": 0.906,
+        "fpr": 0.552,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.004704737104475498,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "5": {
+        "auc": 0.749822,
+        "advantage": 0.42400000000000004,
+        "tpr": 0.894,
+        "fpr": 0.47,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.00651246402412653,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "6": {
+        "auc": 0.6208,
+        "advantage": 0.278,
+        "tpr": 0.896,
+        "fpr": 0.618,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0005878745578229427,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "7": {
+        "auc": 0.626468,
+        "advantage": 0.274,
+        "tpr": 0.966,
+        "fpr": 0.692,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.012547805905342102,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "8": {
+        "auc": 0.585334,
+        "advantage": 0.17799999999999994,
+        "tpr": 0.938,
+        "fpr": 0.76,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0006132813869044185,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "9": {
+        "auc": 0.619692,
+        "advantage": 0.2799999999999999,
+        "tpr": 0.958,
+        "fpr": 0.678,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.004806607961654663,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      }
+    },
+    "groups": {
+      "target": {
+        "macro_auc": 0.515378,
+        "macro_advantage": -0.006000000000000005,
+        "class_count": 1
+      },
+      "retained": {
+        "macro_auc": 0.6777235555555555,
+        "macro_advantage": 0.33733333333333326,
+        "class_count": 9
+      }
+    }
+  },
+  "membership_difference_from_retrain": {
+    "target": {
+      "macro_auc": 0.08493799999999996,
+      "macro_advantage": 0.16200000000000003
+    },
+    "retained": {
+      "macro_auc": -0.0036913333333333798,
+      "macro_advantage": -0.009999999999999953
+    }
+  },
+  "reference_sha256": "088311560fae71dd764f23fa1a756390bfbf9784a53ba1e1bfa4cb8f6caa165b"
+}

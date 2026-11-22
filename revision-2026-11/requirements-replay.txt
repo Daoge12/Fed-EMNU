@@ -1,0 +1,4 @@
+# Install torch/torchvision first using the documented CPU or CUDA wheel index.
+# Minimal replay dependencies; requirements-revision.txt remains the historical environment record.
+numpy>=1.26,<3
+pillow>=10

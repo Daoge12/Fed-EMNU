@@ -1,0 +1,141 @@
+{
+  "before": {
+    "test_acc": 0.6996,
+    "forget_acc": 0.729,
+    "retain_acc": 0.6963333333333334,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "after": {
+    "test_acc": 0.6247,
+    "forget_acc": 0.0,
+    "retain_acc": 0.6941111111111111,
+    "test_count": 10000,
+    "forget_count": 1000,
+    "retain_count": 9000
+  },
+  "method_seconds": 764.8845619000494,
+  "optimizer_steps": 36115,
+  "communication": {},
+  "pilot": false,
+  "run_dir": "C:\\Users\\le\\Documents\\Codex\\2026-11-09\\ni\\outputs\\Fed-EMNU-revision\\experiments\\extension-resnet34\\noniid_seed43_retrain\\20261110T094321.836906Z_retrain_seed43",
+  "membership": {
+    "attack": "class-conditioned calibrated negative cross entropy",
+    "access": "black-box posterior and true class label",
+    "per_class": {
+      "0": {
+        "auc": 0.4799,
+        "advantage": -0.018000000000000016,
+        "tpr": 0.538,
+        "fpr": 0.556,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -26.328298568725586,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "1": {
+        "auc": 0.59617,
+        "advantage": 0.18800000000000006,
+        "tpr": 0.784,
+        "fpr": 0.596,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.32372087240219116,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "2": {
+        "auc": 0.68673,
+        "advantage": 0.30200000000000005,
+        "tpr": 0.788,
+        "fpr": 0.486,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.01719929650425911,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "3": {
+        "auc": 0.728072,
+        "advantage": 0.318,
+        "tpr": 0.602,
+        "fpr": 0.284,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.6932275295257568,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "4": {
+        "auc": 0.655836,
+        "advantage": 0.21000000000000002,
+        "tpr": 0.652,
+        "fpr": 0.442,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.015229753218591213,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "5": {
+        "auc": 0.656866,
+        "advantage": 0.30000000000000004,
+        "tpr": 0.908,
+        "fpr": 0.608,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.04877220094203949,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "6": {
+        "auc": 0.594352,
+        "advantage": 0.20000000000000007,
+        "tpr": 0.796,
+        "fpr": 0.596,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.2745653986930847,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "7": {
+        "auc": 0.600608,
+        "advantage": 0.20799999999999996,
+        "tpr": 0.752,
+        "fpr": 0.544,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.004011919256299734,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "8": {
+        "auc": 0.553486,
+        "advantage": 0.14400000000000002,
+        "tpr": 0.876,
+        "fpr": 0.732,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.002311276039108634,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      },
+      "9": {
+        "auc": 0.615396,
+        "advantage": 0.254,
+        "tpr": 0.916,
+        "fpr": 0.662,
+        "calibrated_sign": 1,
+        "calibrated_threshold": -0.0016820861492305994,
+        "calibration_count_per_group": 500,
+        "test_count_per_group": 500
+      }
+    },
+    "groups": {
+      "target": {
+        "macro_auc": 0.4799,
+        "macro_advantage": -0.018000000000000016,
+        "class_count": 1
+      },
+      "retained": {
+        "macro_auc": 0.6319462222222223,
+        "macro_advantage": 0.23600000000000007,
+        "class_count": 9
+      }
+    }
+  }
+}
