@@ -1,0 +1,2 @@
+# Preserve recorded source/configuration bytes and PUBLIC_MANIFEST hashes across checkouts.
+* -text
